@@ -145,4 +145,4 @@ if [ -f '/usr/local/bin/google-cloud-sdk/completion.bash.inc' ]; then source '/u
 alias v="vim"
 alias sv="sudo vim"
 alias mkd="mkdir -pv"
-
+alias r="ranger"

@@ -1,3 +1,10 @@
+# refresh.sh - a bash script to refresh my dotfiles repository
+# 
+# ./refresh.sh copies the relevant configuration files to
+# the current folder, so I only have to run this whenever I 
+# want to update my dotfiles repo.
+
+
 # copy xorg config files to folder
 cp -r /etc/X11/xorg.conf.d .
 
@@ -7,3 +14,9 @@ cp -r ~/.i3 .
 # copy rc's over
 cp ~/.bashrc .
 cp ~/.vimrc .
+
+
+# copy files from .config
+cp -r ~/.config/ranger ./.config/ranger
+cp -r ~/.config/neofetch ./.config/neofetch
+

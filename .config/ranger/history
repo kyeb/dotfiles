@@ -1,0 +1,14 @@
+shell code .
+help
+set show_hidden true
+set hidden true
+set show-hidden true
+search .config
+open_with vim
+delete
+open_with 2
+
+cd .
+open_with 
+search x8
+search not

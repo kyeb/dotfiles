@@ -81,7 +81,6 @@ bindsym Mod1+v split v
 bindsym Mod1+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym Mod1+s layout stacking
 bindsym Mod1+w layout tabbed
 bindsym Mod1+e layout toggle split
 
@@ -169,7 +168,7 @@ bar {
 
 
 
-# MY CONFIG STUFF BELOW
+# MY CUSTOM CONFIG STUFF BELOW
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
@@ -185,10 +184,27 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
+# startup processes
+# Set background according to ~/.fehbg script
 exec ~/.fehbg
-exec compton --config ~/.config/compton.conf -b
-
+# Start compton
+exec --no-startup-id compton --config ~/.config/compton.conf -b
+# Start xautolock to automatically lock and sleep after 10 minutes
+exec --no-startup-id xautolock -time 10 -locker "~/.i3/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
+# Network manager applet
+exec --no-startup-id nm-applet
+# systemwide keybindings
 exec xmodmap -e "clear lock"  # clears the caps lock function
 exec xmodmap -e "keycode 66 = Escape NoSymbol Escape" # sets it to escape
 
-bindsym Mod1+x exec i3lock -e -c 062f4f && systemctl suspend 
+# lock screen on alt+x
+bindsym Mod1+x exec ~/.i3/lock.sh 
+
+# gaps and borders stuff
+for_window [class="^.*"] border pixel 1
+gaps inner 15
+gaps outer 15
+bindsym Mod1+Shift+t		gaps inner current set 15; gaps outer current set 15
+bindsym Mod1+s			gaps inner current plus 5
+bindsym Mod1+Shift+s		gaps inner current minus 5
+bindsym Mod1+Shift+d		gaps inner current set 0; gaps outer current set 0
