@@ -8,9 +8,6 @@
 # copy xorg config files to folder
 cp -r /etc/X11/xorg.conf.d .
 
-# copy i3 config files to folder
-cp -r ~/.i3 .
-
 # copy rc's over
 cp ~/.bashrc .
 cp ~/.vimrc .
@@ -19,4 +16,6 @@ cp ~/.vimrc .
 # copy files from .config
 cp -r ~/.config/ranger ./.config/ranger
 cp -r ~/.config/neofetch ./.config/neofetch
-
+cp -r ~/.config/i3 ./.config/i3
+cp -r ~/.config/i3blocks ./.config/i3blocks
+cp -r ~/.config/polybar ./.config/polybar

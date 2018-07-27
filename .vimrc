@@ -48,9 +48,13 @@ if has('syntax') && has('eval')
 endif
 
 
-
+" Custom options
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
 set undodir=~/.vim/tmp,.
 
+:set number relativenumber
 
+
+" Extension options
+let g:airline_powerline_fonts = 1

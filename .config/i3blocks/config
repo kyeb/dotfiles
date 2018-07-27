@@ -1,0 +1,59 @@
+# i3blocks config file
+#
+# Please see man i3blocks for a complete reference!
+# The man page is also hosted at http://vivien.github.io/i3blocks
+#
+# List of valid properties:
+#
+# align
+# color
+# command
+# full_text
+# instance
+# interval
+# label
+# min_width
+# name
+# separator
+# separator_block_width
+# short_text
+# signal
+# urgent
+
+# Global properties
+#
+# The top properties below are applied to every block, but can be overridden.
+# Each block command defaults to the script name to avoid boilerplate.
+command=/home/kyeb/.config/i3blocks/$BLOCK_NAME
+separator_block_width=15
+markup=none
+
+#if you prefer updating only when signaled
+[volume]
+command=.config/i3blocks/volume -Sa
+interval=persist
+
+[memory]
+command=~/.config/i3blocks/memory
+label=mem: 
+interval=10
+
+[batterybar]
+command=~/.config/i3blocks/batterybar 
+label=bat:
+interval=10
+markup=pango
+min_width=bat: ■■■■■
+
+[calendar]
+command=~/.config/i3blocks/cal
+interval=15
+
+# Generic media player support
+#
+# This displays "ARTIST - SONG" if a music is playing.
+# Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+[mediaplayer]
+instance=spotify
+interval=5
+signal=10

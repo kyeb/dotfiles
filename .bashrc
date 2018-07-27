@@ -146,3 +146,7 @@ alias v="vim"
 alias sv="sudo vim"
 alias mkd="mkdir -pv"
 alias r="ranger"
+
+# enable pywal
+(cat ~/.cache/wal/sequences &)
+
