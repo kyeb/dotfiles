@@ -9,22 +9,41 @@ open_with 2
 cd .
 search x8
 search not
-open_with 
 rename i3
 touch batterybar
 open_with v
 open_with vim
 chmod +x
 !chmod +x
-open_with shell
-open_with bash
 search i3
 search .con
 search conf
 search /mnt
 shell 
 find 
-
 ! mkdir tmp
 shell mkdir tmp
 shell python autoreports.py
+rename template_database.yml
+rename times.csv
+open_with jupyter notebook
+open_with viewn
+tabn
+ta
+tab
+newtab
+tabe
+v
+open_with viewnior
+
+sh
+search test
+search r
+search ranger
+shell cd
+open_with 
+open_with libinput
+open_with libreoffice
+search 
+open_with shell
+open_with bash

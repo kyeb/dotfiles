@@ -11,7 +11,7 @@
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: Lato 8
+font pango: Source Code Pro 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -164,43 +164,42 @@ bindsym Mod1+r mode "resize"
 # finds out, if available)
 bar {
 	status_command i3blocks
-	position top
-	font pango: Lato 8
+	font pango: Source Code Pro 9, Font Awesome 9
 	colors{
 	background #232323
 	}
+#	status_command /home/kyeb/.config/polybar/launch.sh
 }
 
 
 
 # MY CUSTOM CONFIG STUFF BELOW
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks 
-bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer -q -D pulse sset Master 5%+ unmute && pkill -RTMIN+1 i3blocks 
+bindsym XF86AudioLowerVolume exec amixer -q -D pulse sset Master 5%- unmute && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle && pkill -RTMIN+1 i3blocks
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previou
+bindsym XF86AudioPrev exec playerctl previous
 
 # Other shortcuts
 bindsym Mod1+c exec google-chrome --password-store=basic
 
 # startup processes
-# Set background according to ~/.fehbg script
-exec --no-startup-id ~/.fehbg
-# Start compton
 exec --no-startup-id compton --config ~/.config/compton.conf -b
-# Start xautolock to automatically lock and sleep after 10 minutes
-exec --no-startup-id xautolock -time 10 -locker "~/.config/i3/lock.sh" -notify 30 -notifier "notify-send -t 10000 -- 'LOCKING screen in 30 seconds'"
-# Network manager applet
+exec --no-startup-id xautolock -time 10 -locker "~/.config/i3/lock.sh"
+exec --no-startup-id xss-lock -- ~/.config/i3/lock.sh &
+exec --no-startup-id fluxgui
+exec --no-startup-id caffeine-indicator
 exec --no-startup-id nm-applet
+exec ~/.fehbg
 # pywal
 exec wal -R
 # systemwide keybindings

@@ -53,8 +53,11 @@ set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
 set undodir=~/.vim/tmp,.
 
-:set number relativenumber
+set number relativenumber
+
+vnoremap // y/<C-R>"<CR>
 
 
 " Extension options
 let g:airline_powerline_fonts = 1
+

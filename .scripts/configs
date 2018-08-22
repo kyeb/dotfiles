@@ -1,0 +1,9 @@
+cff	~/.scripts/folders
+cfc	~/.scripts/configs
+cfb	~/.bashrc
+cfv	~/.vimrc
+cfr	~/.config/ranger/rc.conf
+cfi	~/.config/i3/config
+cfu	~/.config/newsboat/urls
+cfn	~/.config/newsboat/config
+cfA	~/.asoundrc

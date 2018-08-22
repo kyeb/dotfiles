@@ -11,6 +11,7 @@ cp -r /etc/X11/xorg.conf.d .
 # copy rc's over
 cp ~/.bashrc .
 cp ~/.vimrc .
+cp ~/.bash_aliases .
 
 
 # copy files from .config
@@ -18,4 +19,4 @@ cp -r ~/.config/ranger ./.config/ranger
 cp -r ~/.config/neofetch ./.config/neofetch
 cp -r ~/.config/i3 ./.config/i3
 cp -r ~/.config/i3blocks ./.config/i3blocks
-cp -r ~/.config/polybar ./.config/polybar
+cp -r ~/.scripts ./.scripts

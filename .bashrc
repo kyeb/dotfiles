@@ -88,7 +88,7 @@ fi
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -141,12 +141,12 @@ if [ -f '/usr/local/bin/google-cloud-sdk/path.bash.inc' ]; then source '/usr/loc
 # The next line enables shell command completion for gcloud.
 if [ -f '/usr/local/bin/google-cloud-sdk/completion.bash.inc' ]; then source '/usr/local/bin/google-cloud-sdk/completion.bash.inc'; fi
 
-# aliases
-alias v="vim"
-alias sv="sudo vim"
-alias mkd="mkdir -pv"
-alias r="ranger"
-
 # enable pywal
 (cat ~/.cache/wal/sequences &)
 
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+source ~/.rvm/scripts/rvm
+
+source ~/.shortcuts
