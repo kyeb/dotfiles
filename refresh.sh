@@ -15,8 +15,8 @@ cp ~/.bash_aliases .
 
 
 # copy files from .config
-cp -r ~/.config/ranger ./.config/ranger
-cp -r ~/.config/neofetch ./.config/neofetch
-cp -r ~/.config/i3 ./.config/i3
-cp -r ~/.config/i3blocks ./.config/i3blocks
-cp -r ~/.scripts ./.scripts
+cp -r ~/.config/ranger ./.config
+cp -r ~/.config/neofetch ./.config
+cp -r ~/.config/i3 ./.config
+cp -r ~/.config/i3blocks ./.config
+cp -r ~/.scripts .

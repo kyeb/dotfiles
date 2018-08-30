@@ -156,6 +156,7 @@ mode "resize" {
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
+	bindsym q      mode "default"
 }
 
 bindsym Mod1+r mode "resize"
@@ -163,7 +164,7 @@ bindsym Mod1+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3blocks
 }
 
 
@@ -185,12 +186,12 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # startup processes
+# Lock screen on suspend
+exec xss-lock /home/kyeb/.config/i3/lock.sh &
 # Set background according to ~/.fehbg script
 exec --no-startup-id ~/.fehbg
 # Start compton
 exec --no-startup-id compton --config ~/.config/compton.conf -b
-# Start xautolock to automatically lock and sleep after 10 minutes
-exec --no-startup-id xautolock -time 10 -locker "~/.i3/lock.sh" -notify 30 -notifier "notify-send -u critical -t 10000 -- 'LOCKING screen in 30 seconds'"
 # Network manager applet
 exec --no-startup-id nm-applet
 # systemwide keybindings
@@ -198,6 +199,84 @@ exec xmodmap -e "clear lock"  # clears the caps lock function
 exec xmodmap -e "keycode 66 = Escape NoSymbol Escape" # sets it to escape
 
 # lock screen on alt+x
-bindsym Mod1+x exec ~/.i3/lock.sh 
+bindsym Mod1+x exec systemctl suspend
 
+# chrome on alt+c
+bindsym Mod1+c exec google-chrome
+
+### i3-gaps stuff ###
+
+# Necessary for i3-gaps to work properly (pixel can be any value)
 for_window [class="^.*"] border pixel 1
+
+# Smart Gaps
+smart_gaps on
+
+# Smart Borders
+smart_borders on
+
+# Set inner/outer gaps
+gaps inner 12
+gaps outer -2
+
+# Gaps mode
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: j|k|0 (local), Shift + j|k|0 (global)
+set $mode_gaps_inner Inner Gaps: j|k|0 (local), Shift + j|k|0 (global)
+bindsym Mod1+Shift+g mode "$mode_gaps"
+
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+	bindsym q      mode "default"
+}
+
+mode "$mode_gaps_inner" {
+        bindsym j     gaps inner current plus 5
+        bindsym k     gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
+
+        bindsym Shift+j     gaps inner all plus 5
+        bindsym Shift+k     gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+	bindsym q      mode "default"
+}
+
+mode "$mode_gaps_outer" {
+        bindsym j     gaps outer current plus 5
+        bindsym k     gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+j     gaps outer all plus 5
+        bindsym Shift+k     gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+	bindsym q      mode "default"
+}
+
+# pywal stuff
+#
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use 
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources.
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
+
