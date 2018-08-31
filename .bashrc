@@ -155,3 +155,7 @@ function ranger-cd {
     fi
     rm -f -- "$tempfile"
 }
+
+# gpg
+export GPG_TTY=$(tty)
+

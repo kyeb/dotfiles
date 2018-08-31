@@ -9,7 +9,8 @@ sudo cp -r ./xorg.conf.d /etc/X11
 # copy rc's over
 cp ./.bashrc ~
 cp ./.vimrc ~
-cp ./bash_aliases ~
+cp ./.bash_aliases ~
+cp ./.dircolors ~
 
 
 # copy files from .config
@@ -18,7 +19,7 @@ cp -r ./.config/neofetch ~/.config
 cp -r ./.config/i3 ~/.config
 cp -r ./.config/i3blocks ~/.config
 cp -r ./.scripts ~ eventually do a full install of my preferred system setup
-sudo apt install vim git curl apt-transport-https snapd
+sudo apt install vim git curl apt-transport-https snapd htop
 
 mkdir ~/.vim/tmp
 

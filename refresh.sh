@@ -12,6 +12,7 @@ cp -r /etc/X11/xorg.conf.d .
 cp ~/.bashrc .
 cp ~/.vimrc .
 cp ~/.bash_aliases .
+cp ~/.dircolors .
 
 
 # copy files from .config

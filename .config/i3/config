@@ -170,44 +170,10 @@ bar {
 
 
 # MY CUSTOM CONFIG STUFF BELOW
-# Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
-
-# Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-
-# startup processes
-# Lock screen on suspend
-exec xss-lock /home/kyeb/.config/i3/lock.sh &
-# Set background according to ~/.fehbg script
-exec --no-startup-id ~/.fehbg
-# Start compton
-exec --no-startup-id compton --config ~/.config/compton.conf -b
-# Network manager applet
-exec --no-startup-id nm-applet
-# systemwide keybindings
-exec xmodmap -e "clear lock"  # clears the caps lock function
-exec xmodmap -e "keycode 66 = Escape NoSymbol Escape" # sets it to escape
-
-# lock screen on alt+x
-bindsym Mod1+x exec systemctl suspend
-
-# chrome on alt+c
-bindsym Mod1+c exec google-chrome
-
 ### i3-gaps stuff ###
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 
 # Smart Gaps
 smart_gaps on
@@ -262,7 +228,7 @@ mode "$mode_gaps_outer" {
 }
 
 # pywal stuff
-#
+
 # Set colors from Xresources
 # Change 'color7' and 'color2' to whatever colors you want i3 to use 
 # from the generated scheme.
@@ -280,3 +246,39 @@ client.placeholder      $bg     $bg     $fg  $bg       $bg
 
 client.background       $bg
 
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+
+# Media player controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+# startup processes
+# Lock screen on suspend
+exec xss-lock /home/kyeb/.config/i3/lock.sh &
+# Set background 
+exec --no-startup-id nitrogen --restore
+# Start compton
+exec --no-startup-id compton &
+# Network manager applet
+exec --no-startup-id nm-applet
+# systemwide keybindings
+exec xmodmap -e "clear lock"  # clears the caps lock function
+exec xmodmap -e "keycode 66 = Escape NoSymbol Escape" # sets it to escape
+
+# lock screen on alt+x
+bindsym Mod1+x exec systemctl suspend
+
+# chrome on alt+c
+bindsym Mod1+c exec google-chrome
+
+bindsym Mod1+Shift+d exec ~/.scripts/dmenumount
