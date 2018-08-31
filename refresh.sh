@@ -8,6 +8,9 @@
 # copy xorg config files to folder
 cp -r /etc/X11/xorg.conf.d .
 
+# dconf (gnome terminal configuration, etc.)
+cp -r ~/.config/dconf ./.config
+
 # copy rc's over
 cp ~/.bashrc .
 cp ~/.vimrc .

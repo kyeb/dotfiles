@@ -28,22 +28,30 @@ command=/home/kyeb/.config/i3blocks/$BLOCK_NAME
 separator_block_width=15
 markup=none
 
-#if you prefer updating only when signaled
-[volume]
-command=.config/i3blocks/volume -Sa
-interval=persist
+[cpu_usage]
+command=sleep 0.5; /home/kyeb/.config/i3blocks/cpu
+label=cpu
+interval=repeat
+min_width=99.00%
+align=center
 
 [memory]
 command=~/.config/i3blocks/memory
-label=mem: 
-interval=10
+label=mem
+interval=1
 
 [batterybar]
 command=~/.config/i3blocks/batterybar 
-label=bat:
 interval=10
 markup=pango
-min_width=bat: ■■■■■
+min_width=■■■■■
+
+[volume]
+command=/home/kyeb/.config/i3blocks/volume 
+markup=pango
+signal=1
+interval=5
+
 
 [calendar]
 command=~/.config/i3blocks/cal
@@ -53,6 +61,7 @@ interval=15
 #
 # This displays "ARTIST - SONG" if a music is playing.
 # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+# CURRENTLY NOT WORKING
 [mediaplayer]
 instance=spotify
 interval=5

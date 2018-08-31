@@ -281,4 +281,4 @@ bindsym Mod1+x exec systemctl suspend
 # chrome on alt+c
 bindsym Mod1+c exec google-chrome
 
-bindsym Mod1+Shift+d exec ~/.scripts/dmenumount
+bindsym Mod1+m exec ~/.scripts/dmenumount

@@ -5,4 +5,5 @@
 
 xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 2560x1440 --right-of eDP1
 
-~/.fehbg
+nitrogen --restore
+

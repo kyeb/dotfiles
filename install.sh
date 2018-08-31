@@ -12,6 +12,8 @@ cp ./.vimrc ~
 cp ./.bash_aliases ~
 cp ./.dircolors ~
 
+# reinstall gnome terminal settings
+cp ./.config/dconf ~/.config
 
 # copy files from .config
 cp -r ./.config/ranger ~/.config

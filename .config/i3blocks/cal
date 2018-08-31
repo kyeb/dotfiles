@@ -1,7 +1,5 @@
 #! /bin/sh
 
-width=200
-height=150
 datefmt="+%b %d %H:%M"
 
 OPTIND=1
@@ -24,16 +22,7 @@ done
 case "$BLOCK_BUTTON" in
   1|2|3) 
 
-	# the position of the upper left corner of the popup
-	posX=$(($(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1) - $width))
-	posY=$(($BLOCK_Y))
-
-	i3-msg -q "exec yad --calendar \
-        --width=$width --height=$height \
-	    --undecorated --fixed \
-	    --close-on-unfocus --no-buttons \
-	    --posx=$posX --posy=$posY \
-	    > /dev/null"
+	  google-chrome calendar.google.com > /dev/null
 esac
 date "$datefmt"
    
