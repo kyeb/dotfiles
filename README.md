@@ -1,6 +1,18 @@
 # kyeb dotfiles
 
-This repo contains various configuration files for my Linux setup on my Dell XPS 15 (9550). There isn't anything crazy cool here, but it's a decent aggregation of how-to's for newbies to i3wm and ricing. Regardless, anyone is free to use the files/info contained here. 
+This repo contains various configuration files for my Linux setup on my Dell XPS
+15 (9550). There isn't anything crazy cool here, but it's a decent aggregation of 
+how-to's for newbies to i3wm and ricing. Regardless, anyone is free to use the 
+files/info contained here. 
+
+## Sample workspace
+![screenshot.png](https://github.com/kyeb/dotfiles/raw/master/scrot.png)
+
+## Installation
+
+The install script is untested as of now, so I cannot vouch for it's stability or effectiveness.
+
+If you want to try it, simply cd into the project directory and run `sudo ./install.sh`
 
 ## Bash configuration 
 
