@@ -1,0 +1,2 @@
+# ignore ranger installation files
+.config/ranger/commands*

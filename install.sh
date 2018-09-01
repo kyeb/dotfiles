@@ -32,16 +32,19 @@ wget https://dl.google.com/linux/linux_signing_key.pub
 sudo apt-key add linux_signing_key.pub
 rm linux_signing_key.pub
 
-# install microsoft repo for vs code
+# activate various repos
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+
+sudo add-apt-repository ppa:nathan-renniewaldock/flux
 
 # update sources
 sudo apt update
 
 # install a bunch of basics
-sudo apt install google-chrome-stable python3 python3-pip ranger code fonts-powerline scrot
+sudo apt install google-chrome-stable python3 python3-pip ranger \
+	code fonts-powerline scrot neofetch fluxgui
 sudo snap install slack --classic
 
 # install powerline
@@ -57,7 +60,8 @@ fc-cache -vf
 # fix the chrome sources list thing
 sudo rm /etc/apt/sources.list.d/google-chrome.list
 
-# install i3-gaps based on the script at https://github.com/maestrogerardo/i3-gaps-deb
+# install i3-gaps based on the script at 
+# https://github.com/maestrogerardo/i3-gaps-deb
 cd ~/Downloads
 git clone https://github.com/maestrogerardo/i3-gaps-deb.git
 cd i3-gaps-deb
