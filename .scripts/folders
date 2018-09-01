@@ -1,10 +1,11 @@
 # You can add comments to these files with #
 h	~/
-d	~/mit/hack/dev
-D	~/Downloads
+d	~/Downloads
+D	/mnt/shared/mit/hack/dev
 m	~/Music
 p	/mnt/windows/Users/kyeb/Pictures
 vv	~/Videos
 s	~/.scripts
+S	/mnt/shared
 cf	~/.config
 b	~/badges/rhythm-private-analysis-deltav18
