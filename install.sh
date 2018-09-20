@@ -21,7 +21,7 @@ cp -r ./.config/neofetch ~/.config
 cp -r ./.config/i3 ~/.config
 cp -r ./.config/i3blocks ~/.config
 cp -r ./.scripts ~ eventually do a full install of my preferred system setup
-sudo apt install vim git curl apt-transport-https snapd htop
+sudo apt-get install vim git curl apt-transport-https snapd htop
 
 mkdir ~/.vim/tmp
 
@@ -43,8 +43,9 @@ sudo add-apt-repository ppa:nathan-renniewaldock/flux
 sudo apt update
 
 # install a bunch of basics
-sudo apt install google-chrome-stable python3 python3-pip ranger \
-	code fonts-powerline scrot neofetch fluxgui viewnior
+sudo apt-get install google-chrome-stable python3 python3-pip ranger \
+	code fonts-powerline scrot neofetch fluxgui viewnior xbacklight \
+    fonts-font-awesome
 sudo snap install slack --classic
 
 # install powerline
@@ -66,4 +67,6 @@ cd ~/Downloads
 git clone https://github.com/maestrogerardo/i3-gaps-deb.git
 cd i3-gaps-deb
 ./i3-gaps-deb
+
+sudo apt-get install lxappearance gtk-chtheme qt4-qtconfig
 

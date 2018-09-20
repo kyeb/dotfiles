@@ -2,8 +2,9 @@
 h	~/
 d	~/Downloads
 D	/mnt/shared/mit/hack/dev
-m	~/Music
+m	/mnt/shared/mit	
 p	/mnt/windows/Users/kyeb/Pictures
+w	/mnt/windows/Users/kyeb
 vv	~/Videos
 s	~/.scripts
 S	/mnt/shared
