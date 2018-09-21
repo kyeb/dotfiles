@@ -166,7 +166,8 @@ bindsym Mod1+r mode "resize"
 bar {
     position top
     status_command i3blocks
-    font pango: Source Code Pro, Awesome 8
+    font pango: Source Code Pro 8, Awesome 9
+    tray_output primary
 }
 
 
