@@ -3,7 +3,12 @@ h	~/
 d	~/Downloads
 D	/mnt/shared/mit/hack/dev
 m	/mnt/shared/mit	
-p	/mnt/windows/Users/kyeb/Pictures
+18  /mnt/shared/mit/18.03
+2   /mnt/shared/mit/6.042
+4   /mnt/shared/mit/6.004
+6   /mnt/shared/mit/6.006
+3   /mnt/shared/mit/3.091
+p	/mnt/shared/pictures
 w	/mnt/windows/Users/kyeb
 vv	~/Videos
 s	~/.scripts

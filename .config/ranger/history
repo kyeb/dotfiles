@@ -12,13 +12,11 @@ search x8
 search not
 rename resume_kye.pd
 open_with 
-rename resume_kye.pdf
 ...
 !...
 rename 
 rename resume_draft.json
 rename resume_draft.pdf
-shell 
 !mkdir 6.042
 mkdir 6.042
 shell unzip resume.zip
@@ -32,3 +30,13 @@ mkdir pset2
 
 rename states.pdf
 rename pset2.tex
+rename resume_kye.pdf
+rename kye_burchard_transcript.png
+shell 
+find 
+rename PSET2_R05_KyeBurchard.pdf
+rename PSET1_R05_KyeBurchard.pdf
+rename design.txt
+rename README.md
+vim
+edit

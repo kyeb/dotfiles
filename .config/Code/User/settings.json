@@ -1,0 +1,16 @@
+{
+    "explorer.confirmDelete": false,
+    "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
+    "files.trimTrailingWhitespace": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "editor.lineNumbers": "relative",
+    "editor.rulers": [
+        80
+    ],
+    "editor.acceptSuggestionOnEnter": "off",
+    "files.autoSave": "off",
+    "vim.handleKeys":{
+        "<C-c>": false,
+        "<C-v>": false
+      }
+}

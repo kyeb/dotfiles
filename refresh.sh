@@ -23,4 +23,5 @@ cp -r ~/.config/ranger ./.config
 cp -r ~/.config/neofetch ./.config
 cp -r ~/.config/i3 ./.config
 cp -r ~/.config/i3blocks ./.config
+cp -r ~/.config/Code/User/settings.json ./.config/Code/User
 cp -r ~/.scripts .
