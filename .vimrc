@@ -54,6 +54,7 @@ set directory=~/.vim/tmp,.
 set undodir=~/.vim/tmp,.
 
 set number relativenumber
+set tw=80
 
 vnoremap // y/<C-R>"<CR>
 
@@ -69,3 +70,4 @@ set expandtab
 " Extension options
 let g:airline_powerline_fonts = 1
 let g:vimtex_view_method = 'mupdf'
+
