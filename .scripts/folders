@@ -1,5 +1,5 @@
 # You can add comments to these files with #
-h	~/
+h	/mnt/shared/mit/hack
 d	~/Downloads
 D	/mnt/shared/mit/hack/dev
 m	/mnt/shared/mit	
@@ -8,10 +8,9 @@ m	/mnt/shared/mit
 4   /mnt/shared/mit/6.004
 6   /mnt/shared/mit/6.006
 3   /mnt/shared/mit/3.091
-p	/mnt/shared/pictures
+P	/mnt/shared/pictures
+p   ~/Pictures
 w	/mnt/windows/Users/kyeb
 vv	~/Videos
-s	~/.scripts
-S	/mnt/shared
+s	/mnt/shared
 cf	~/.config
-b	~/badges/rhythm-private-analysis-deltav18

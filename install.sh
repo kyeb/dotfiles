@@ -45,7 +45,7 @@ sudo apt update
 # install a bunch of basics
 sudo apt-get install google-chrome-stable python3 python3-pip ranger \
 	code fonts-powerline scrot neofetch fluxgui viewnior xbacklight \
-    fonts-font-awesome
+    fonts-font-awesome vim-gtk
 sudo snap install slack --classic
 
 # install powerline

@@ -1,11 +1,3 @@
-set show_hidden true
-set hidden true
-set show-hidden true
-search .config
-open_with vim
-delete
-open_with 2
-cd .
 search x8
 search not
 rename resume_kye.pd
@@ -19,13 +11,11 @@ rename resume_draft.pdf
 mkdir 6.042
 shell unzip resume.zip
 rename 2018 MIT Student Host Sign Up (Responses).csv
-open_with 1
 open_with sh
 rename pset.pdf_
 rename pset1.pdf
 mkdir pset1
 mkdir pset2
-
 rename states.pdf
 rename pset2.tex
 rename resume_kye.pdf
@@ -48,3 +38,13 @@ mkdir ext19
 rename kyeb_kpcb_statement.pdf
 mkdir int19
 ! u
+rename 4-1b.png
+! unzip ps4-template.zip
+shell unzip ps4-questions.pdf
+shell unzip ps4-template.zip
+open_with 1
+mkdir assets
+
+open_with 2
+shell unzip favicon_package_v0.16.zip
+rename 4-7b.jpg
