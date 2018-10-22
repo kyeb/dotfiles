@@ -44,7 +44,7 @@ endif " has("autocmd")
 " The ! means the package won't be loaded right away but when plugins are
 " loaded during initialization.
 if has('syntax') && has('eval')
-  packadd! matchit 
+  packadd! matchit
 endif
 
 
@@ -54,7 +54,7 @@ set directory=~/.vim/tmp,.
 set undodir=~/.vim/tmp,.
 
 set number relativenumber
-set tw=80
+set tw=79
 
 vnoremap // y/<C-R>"<CR>
 
@@ -71,6 +71,10 @@ set expandtab
 let g:airline_powerline_fonts = 1
 let g:vimtex_view_method = 'mupdf'
 
+" use system clipboard if gvim is installed
 set clipboard=unnamedplus
+
+" make backspace normal
+set backspace=2
 
 

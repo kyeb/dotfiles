@@ -236,8 +236,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -255,7 +255,8 @@ exec --no-startup-id compton &
 # Unlock the default keyring
 exec /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 # applets
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet &
+exec --no-startup-id blueman-applet &
 exec --no-startup-id fluxgui &
 # systemwide keybindings
 exec xmodmap -e "clear lock"  # clears the caps lock function

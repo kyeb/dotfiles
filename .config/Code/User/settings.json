@@ -8,11 +8,12 @@
         80
     ],
     "editor.acceptSuggestionOnEnter": "off",
-    "files.autoSave": "afterDelay",
+    "files.autoSave": "off",
     "vim.handleKeys":{
         "<C-c>": false,
         "<C-v>": false
     },
+    "python.pythonPath": "/usr/bin/python3",
     "code-runner.runInTerminal": true,
     "code-runner.executorMap": {
         "javascript": "node",
