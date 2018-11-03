@@ -28,7 +28,7 @@ if has("autocmd")
 
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text setlocal textwidth=78
-
+  au FileType tex set tw=79
   augroup END
 
 else
@@ -54,7 +54,6 @@ set directory=~/.vim/tmp,.
 set undodir=~/.vim/tmp,.
 
 set number relativenumber
-set tw=79
 
 vnoremap // y/<C-R>"<CR>
 
@@ -68,8 +67,10 @@ set expandtab
 
 
 " Extension options
-let g:airline_powerline_fonts = 1
 let g:vimtex_view_method = 'mupdf'
+let g:airline_powerline_fonts = 1
+" currently not working: onedark airline theme
+let g:airline_theme='onedark'
 
 " use system clipboard if gvim is installed
 set clipboard=unnamedplus
@@ -77,4 +78,41 @@ set clipboard=unnamedplus
 " make backspace normal
 set backspace=2
 
+"onedark.vim overrides 
+if (has("autocmd") && !has("gui_running"))
+  augroup colors
+    autocmd!
+    " Set a custom background color in the terminal
+    let s:background = { "gui": "#282C34", "cterm": "235", "cterm16": "0" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "bg": s:background }) "No `fg` setting
+    " Custom tab coloring
+    autocmd ColorScheme * call onedark#extend_highlight("TabLine", {"fg": {"gui": "#282C34"}})
+    autocmd ColorScheme * call onedark#extend_highlight("TabLine", {"bg": {"gui": "#abb2bf"}})
+    autocmd ColorScheme * call onedark#extend_highlight("TabLineFill", {"bg": {"gui": "#abb2bf"}})
+  augroup END
+endif
 
+set termguicolors
+colorscheme onedark
+
+" vimtex options
+" Disable overfull/underfull \hbox and all package warnings
+let g:vimtex_quickfix_latexlog = {
+     \ 'overfull' : 0,
+     \ 'underfull' : 0,
+     \ 'packages' : {
+     \   'default' : 0,
+     \ },
+     \}
+
+" Set up a build directory to stop annoying files in directory
+" Set callback to 0 to disable some random warning that came up
+let g:vimtex_compiler_latexmk = {
+        \ 'build_dir' : 'build/',
+        \ 'executable' : 'latexmk',
+        \ 'callback' : 0,
+        \ 'options' : [
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}

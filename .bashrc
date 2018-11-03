@@ -181,3 +181,5 @@ export LD_LIBRARY_PATH=$BSPATH:$LD_LIBRARY_PATH
 export PATH=$BSPATH/bin:/mnt/shared/mit/6.004/opt/yosysbin:/mnt/shared/mit/6.004/opt/synth:/mnt/shared/mit/6.004/opt/preprocess:/mnt/shared/mit/6.004/opt/gnu-mcu-eclipse/riscv-none-gcc/7.2.0-2-20180111-2230/bin:$PATH
 export LM_LICENSE_FILE=1709@multiplicity.csail.mit.edu
 export VIMRUNTIME=/usr/share/vim/vim80
+
+#set -o vi

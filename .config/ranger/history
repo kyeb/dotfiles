@@ -1,15 +1,3 @@
-rename PSET2_R05_KyeBurchard.pdf
-rename PSET1_R05_KyeBurchard.pdf
-shell 
-shell mkdir pset3
-rename pset3.tex
-rename kyeb_app_embark!.pdf
-rename kyeb_app_betterlesson.pdf
-rename kyeb_app_embark.pdf
-rename cover_kyeb_embark!.pdf
-rename cover_kyeb_betterlesson.pdf
-rename cover_kyeb_embark.pdf
-rename kyeb_app_spell.pdf
 rename apps
 mkdir ext19
 rename kyeb_kpcb_statement.pdf
@@ -48,3 +36,15 @@ rename L13.nb
 rename PSET5_R05_KyeBurchard.pdf
 open_with 
 shell cd ~
+shell
+mkdir old
+rename pset6
+rename ps6.pdf
+rename ps6-questions.pdf
+rename ps6.tex
+rename graphs.jpg
+rename ps7
+rename pset7
+rename pset7.tex
+search 6
+search CAU

@@ -27,7 +27,7 @@ cp -r ./.scripts ~
 echo "Installing basic dependencies"
 sudo apt-get install vim git curl apt-transport-https snapd htop
 
-mkdir ~/.vim/tmp
+mkdir -p ~/.vim/tmp
 
 echo "Adding repositories for Chrome, VSCode, f.lux"
 # activate various repos
@@ -48,21 +48,24 @@ sudo apt update
 
 echo "Installing basic programs"
 # install a bunch of basics
-sudo apt-get install google-chrome-stable python3 python3-pip ranger \
-	code fonts-powerline scrot neofetch fluxgui viewnior xbacklight \
-    fonts-font-awesome vim-gtk
+sudo apt-get install google-chrome-stable python3 python3-pip \
+	code scrot neofetch fluxgui viewnior xbacklight \
+    vim-gtk
 sudo apt-get upgrade
 sudo snap install slack --classic
+
+echo "Installing ranger dev icons"
+git clone git@github.com:alexanderjeurissen/ranger_devicons.git ranger_devicons
+cd ranger_devicons && sudo make install && cd .. && rm -rf ranger_devicons
 
 echo "Installing Powerline Shell prompt"
 # install powerline shell
 pip install powerline-shell
-# fonts
-git clone https://github.com/powerline/fonts.git --depth=1
-cd fonts
-./install.sh
-cd ..
-rm -rf fonts
+pip install ranger
+
+mkdir -p ~/.local/share/fonts
+cd ~/.local/share/fonts && curl -fLo "Source Code Pro Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf
+
 fc-cache -vf
 
 # fix the chrome sources list thing
@@ -76,6 +79,13 @@ git clone https://github.com/maestrogerardo/i3-gaps-deb.git
 cd i3-gaps-deb
 ./i3-gaps-deb
 
-echo "Installing theming stuff"
+echo "Installing random theming stuff"
 sudo apt-get install lxappearance gtk-chtheme qt4-qtconfig
+
+echo "Installing Pathogen"
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+
+echo "Installing vim-airline"
+git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 

@@ -169,6 +169,10 @@ bar {
     font pango: Source Code Pro 8, Awesome 9
     tray_output primary
 }
+# bar {
+#     status_command python /home/kyeb/.local/bin/powerline/bindings/i3/powerline-i3.py
+#     font pango:PowerlineFont 12
+# }
 
 
 
@@ -176,7 +180,7 @@ bar {
 ### i3-gaps stuff ###
 
 # Necessary for i3-gaps to work properly (pixel can be any value)
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 
 # Smart Gaps
 #smart_gaps on
@@ -185,8 +189,8 @@ for_window [class="^.*"] border pixel 2
 smart_borders on
 
 # Set inner/outer gaps
-gaps inner 12
-gaps outer -2
+gaps inner 0
+gaps outer 0
 
 # Gaps mode
 set $mode_gaps Gaps: (o) outer, (i) inner
