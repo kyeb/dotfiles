@@ -1,3 +1,4 @@
+#!/bin/bash
 # install.sh - a bash script to install my dotfiles repository
 # 
 # ./install.sh copies the relevant configuration files to

@@ -1,3 +1,4 @@
+#!/bin/bash
 # refresh.sh - a bash script to refresh my dotfiles repository
 # 
 # ./refresh.sh copies the relevant configuration files to
