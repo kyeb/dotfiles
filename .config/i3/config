@@ -245,15 +245,15 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 
 # startup processes
 # Lock screen on suspend
-exec xss-lock /home/kyeb/.config/i3/lock.sh &
+exec --no-startup-id xss-lock /home/kyeb/.config/i3/lock.sh &
 # Start compton
 exec --no-startup-id compton &
 # Unlock the default keyring
 exec /usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh
 # applets
-exec --no-startup-id nm-applet &
+exec nm-applet &
 # exec --no-startup-id blueman-applet &
-exec --no-startup-id fluxgui &
+exec fluxgui &
 # systemwide keybindings
 exec xmodmap -e "clear lock"  # clears the caps lock function
 exec xmodmap -e "keycode 66 = Escape NoSymbol Escape" # sets it to escape
@@ -276,4 +276,5 @@ bindsym Mod1+Shift+m move workspace to output left
 # 
 # 
 # Set background 
+#
 exec nitrogen --restore

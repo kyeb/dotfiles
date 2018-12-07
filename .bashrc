@@ -124,7 +124,6 @@ source ~/.local/bin/virtualenvwrapper.sh
 export EDITOR='vim'
 export VISUAL='vim'
 alias c='clear'
-alias shorten='PS1="$USER:\W$ "'
 
 function _update_ps1() {
     PS1=$(powerline-shell $?)
@@ -135,12 +134,6 @@ if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
 fi
 
 export PATH="/home/kyeb/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/bin/google-cloud-sdk/path.bash.inc' ]; then source '/usr/local/bin/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/bin/google-cloud-sdk/completion.bash.inc' ]; then source '/usr/local/bin/google-cloud-sdk/completion.bash.inc'; fi
 
 source ~/.shortcuts
 source ~/.bash_aliases
@@ -182,4 +175,3 @@ export PATH=$BSPATH/bin:/mnt/shared/mit/6.004/opt/yosysbin:/mnt/shared/mit/6.004
 export LM_LICENSE_FILE=1709@multiplicity.csail.mit.edu
 export VIMRUNTIME=/usr/share/vim/vim80
 
-#set -o vi

@@ -57,6 +57,18 @@ set number relativenumber
 
 vnoremap // y/<C-R>"<CR>
 
+" Allow mouse usage
+set mouse=a
+
+" Splits open at the bottom and right, which is non-retarded, unlike vim defaults.
+	set splitbelow splitright
+
+" Shortcutting split navigation, saving a keypress:
+	map <C-h> <C-w>h
+	map <C-j> <C-w>j
+	map <C-k> <C-w>k
+	map <C-l> <C-w>l
+
 filetype plugin indent on
 " show existing tab with 4 spaces width
 set tabstop=4
@@ -67,7 +79,7 @@ set expandtab
 
 
 " Extension options
-let g:vimtex_view_method = 'mupdf'
+let g:vimtex_view_method = 'zathura'
 let g:airline_powerline_fonts = 1
 " currently not working: onedark airline theme
 let g:airline_theme='onedark'
@@ -112,7 +124,11 @@ let g:vimtex_compiler_latexmk = {
         \ 'executable' : 'latexmk',
         \ 'callback' : 0,
         \ 'options' : [
-        \   '-synctex=1',
+        \   '-synctex=0',
         \   '-interaction=nonstopmode',
         \ ],
         \}
+
+" save/load folds upon closing/opening
+autocmd BufWinLeave *.* mkview
+autocmd BufWinEnter *.* silent loadview

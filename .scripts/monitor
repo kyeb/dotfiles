@@ -14,7 +14,7 @@
 
 xrandr --auto
 
-if xrandr | grep -q "HDMI1 connected 2560x1440"; and test -d $argv; and [ $argv[1] = "only" ]
+if xrandr | grep -q "HDMI1 connected 2560x1440"; and count $argv > /dev/null; and [ $argv[1] = "only" ]
     echo "Mode: monitor only"
     xrandr --output eDP1 --off --output HDMI1 --mode 2560x1440 --right-of eDP1
 else if xrandr | grep -q "HDMI1 connected 2560x1440"
