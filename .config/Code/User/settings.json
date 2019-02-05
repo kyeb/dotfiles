@@ -1,4 +1,5 @@
 {
+
     "explorer.confirmDelete": false,
     "terminal.integrated.fontFamily": "Source Code Pro for Powerline",
     "files.trimTrailingWhitespace": true,
@@ -56,5 +57,12 @@
         "haskell": "runhaskell",
         "nim": "nim compile --verbosity:0 --hints:off --run"
     },
-    "workbench.colorTheme": "One Dark Pro"
+    "workbench.colorTheme": "One Dark Pro",
+    "window.zoomLevel": 0,
+    "editor.fontSize": 13,
+    "markdown.preview.fontSize": 12,
+    "terminal.integrated.fontSize": 13,
+    "vim.useSystemClipboard": true,
+    "explorer.confirmDragAndDrop": false,
+    "sync.gist": "d0f31596b4418999fcb2e694404bee76"
 }

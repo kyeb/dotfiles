@@ -258,6 +258,9 @@ exec fluxgui &
 exec xmodmap -e "clear lock"  # clears the caps lock function
 exec xmodmap -e "keycode 66 = Escape NoSymbol Escape" # sets it to escape
 
+# alt tab functionality
+exec_always alttab -font "xft:Source Code Pro-10" -bg '#282C34' -frame _rnd_low -t 80x80 -i 16x16 -s 2 
+
 # lock screen on alt+x
 bindsym Mod1+x exec systemctl suspend
 

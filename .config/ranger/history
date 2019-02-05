@@ -1,10 +1,3 @@
-rename pset6.tex
-rename PSET4_R05_KyeBurchard.pdf
-shell unzip test_cases_bf1ap3m4sd0.zip
-mkdir kyeb_twitter_challenge
-vim roverMove.py
-open_with a
-rename L13.nb
 rename PSET5_R05_KyeBurchard.pdf
 shell cd ~
 shell
@@ -34,7 +27,6 @@ open_with
 rename store_with_frid.jpg
 rename store_with_grid.jpg
 shell .
-
 shell unzip ps9-template.zip
 rename pset9
 rename ps9.tex
@@ -44,7 +36,15 @@ rename pset10
 rename ps10.tex
 mkdir lec
 rename lectures
-rename mid_ex03_sol.pdf
-rename mid_ex03.pdf
+mkdir ms_receipts
+
 search notes
-search note
+search sds
+shell 
+cd
+mk
+shell git status
+rename thumbnail.png
+h
+help
+rename shoppy.png
