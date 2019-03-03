@@ -16,7 +16,7 @@ cp ./.bash_aliases ~
 cp ./.dircolors ~
 
 # reinstall gnome terminal settings
-cp ./.config/dconf ~/.config
+cp -r ./.config/dconf ~/.config
 
 # copy files from .config
 cp -r ./.config/ranger ~/.config
@@ -42,7 +42,15 @@ curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microso
 sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
 
-sudo add-apt-repository ppa:nathan-renniewaldock/flux
+# sudo add-apt-repository ppa:nathan-renniewaldock/flux
+# sudo apt install fluxgui
+
+# Signal Desktop
+curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
+
+# FISH
+sudo apt-add-repository ppa:fish-shell/release-3
 
 # update sources
 sudo apt update
@@ -50,8 +58,9 @@ sudo apt update
 echo "Installing basic programs"
 # install a bunch of basics
 sudo apt-get install google-chrome-stable python3 python3-pip \
-	code scrot neofetch fluxgui viewnior xbacklight \
-    vim-gtk
+	code scrot neofetch xbacklight fish \
+    vim-gtk signal-desktop trash-cli compton \
+    texlive-latex-extra xdotool
 sudo apt-get upgrade
 sudo snap install slack --classic
 
@@ -59,13 +68,12 @@ echo "Installing ranger dev icons"
 git clone git@github.com:alexanderjeurissen/ranger_devicons.git ranger_devicons
 cd ranger_devicons && sudo make install && cd .. && rm -rf ranger_devicons
 
-echo "Installing Powerline Shell prompt"
-# install powerline shell
-pip install powerline-shell
+echo "Installing Ranger"
 pip install ranger
+sudo apt install w3m-img
 
-mkdir -p ~/.local/share/fonts
-cd ~/.local/share/fonts && curl -fLo "Source Code Pro Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf
+mkdir -p ~/.fonts
+cd ~/.fonts && curl -fLo "Source Code Pro Nerd Font Complete.ttf" https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf
 
 fc-cache -vf
 
@@ -80,13 +88,17 @@ git clone https://github.com/maestrogerardo/i3-gaps-deb.git
 cd i3-gaps-deb
 ./i3-gaps-deb
 
-echo "Installing random theming stuff"
-sudo apt-get install lxappearance gtk-chtheme qt4-qtconfig
-
 echo "Installing Pathogen"
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 echo "Installing vim-airline"
 git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
+
+echo "Installing oh-my-fish"
+curl -L https://get.oh-my.fish | fish
+
+
+echo "NOT INSTALLED: LATEX (http://tug.org/texlive/quickinstall.html)
+
 
