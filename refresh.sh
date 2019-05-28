@@ -6,23 +6,25 @@
 # want to update my dotfiles repo.
 
 
-# copy xorg config files to folder
-cp -r /etc/X11/xorg.conf.d .
-
 # dconf (gnome terminal configuration, etc.)
-cp -r ~/.config/dconf ./.config
+cp -r ~/.config/dconf ./config/dconf
 
-# copy rc's over
-cp ~/.bashrc .
-cp ~/.vimrc .
-cp ~/.bash_aliases .
-cp ~/.dircolors .
-
+# copy home directory config files over
+cp ~/.vimrc ./vimrc
+cp ~/.gitconfig ./gitconfig
 
 # copy files from .config
-cp -r ~/.config/ranger ./.config
-cp -r ~/.config/neofetch ./.config
-cp -r ~/.config/i3 ./.config
-cp -r ~/.config/i3blocks ./.config
-cp -r ~/.config/Code/User/settings.json ./.config/Code/User
-cp -r ~/.scripts .
+cp ~/.config/ranger/* ./config/ranger > /dev/null 2>&1
+cp ~/.config/stretchly/config.json ./config/stretchly/config.json
+cp ~/.config/compton.conf ./config/compton.conf
+cp -r ~/.config/neofetch ./config
+cp -r ~/.config/i3 ./config
+cp -r ~/.config/i3blocks ./config
+cp ~/.config/Code/User/settings.json ./config/code/settings.json
+cp ~/.config/fish/config.fish ./config/fish/config.fish
+cp -r ~/.config/fish/functions ./config/fish
+
+cp -r ~/scripts ./scripts
+
+apt list --installed | grep "\[installed\]" > installed_programs
+

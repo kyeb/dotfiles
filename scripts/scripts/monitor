@@ -1,0 +1,30 @@
+#!/usr/bin/fish
+
+# This script sets X to see and use my monitor, then fixes my background.
+# Usage: Add the directory of this script to your path (set -U fish_user_paths
+# /path/to/this/script $fish_user_paths), and make sure that the file is
+# executablee (`chmod +x ~/.scripts/monitor`) `monitor` without arguments will
+# check if a monitor is connected and do one of a few things:
+#   - Run `xrandr --auto` if it doesn't recognize the setup
+#   - If it recognizes my home setup, run the dual monitor setup command
+#   - If it recognizes my setup and has been given the argument `only`, turn
+#     off laptop display and keep only monitor on
+#
+# Finally, it fixes wallpapers using `nitrogen --restore`. 
+
+xrandr --auto
+
+if xrandr | grep -q "HDMI1 connected 2560x1440"; and count $argv > /dev/null; and [ $argv[1] = "only" ]
+    echo "Mode: monitor only"
+    xrandr --output eDP1 --off --output HDMI1 --mode 2560x1440 --right-of eDP1
+else if xrandr | grep -q "HDMI1 connected 2560x1440"
+    echo "Mode: display and monitor"
+    xrandr --output eDP1 --mode 1920x1080 --output HDMI1 --mode 2560x1440 --left-of eDP1
+else
+    echo "Mode: auto"
+end
+
+sleep 0.2
+
+nitrogen --restore > /dev/null 2>&1
+

@@ -6,24 +6,26 @@
 # become a full install script for my setup on my XPS 15.
 
 echo "Copying over config files"
-# copy xorg config files to folder
-sudo cp -r ./xorg.conf.d /etc/X11
-
-# copy rc's over
-cp ./.bashrc ~
-cp ./.vimrc ~
-cp ./.bash_aliases ~
-cp ./.dircolors ~
 
 # reinstall gnome terminal settings
-cp -r ./.config/dconf ~/.config
+cp -r ./config/dconf ~/.config
+
+# copy vimrc over
+cp ./vimrc ~/.vimrc
+cp ./gitconfig ~/.gitconfig
 
 # copy files from .config
-cp -r ./.config/ranger ~/.config
-cp -r ./.config/neofetch ~/.config
-cp -r ./.config/i3 ~/.config
-cp -r ./.config/i3blocks ~/.config
-cp -r ./.scripts ~ 
+mkdir -p ~/.config/ranger
+cp -r ./config/ranger/* ~/.config/ranger
+mkdir ~/.config/stretchly
+cp ./config/stretchly/config.json ./config/stretchly
+cp -r ./config/neofetch ~/.config
+cp -r ./config/i3 ~/.config
+cp -r ./config/i3blocks ~/.config
+mkdir -p ~/.config/Code/User
+cp ~/config/code/settings.json ~/.config/Code/User/settings.json
+
+cp -r ./scripts ~ 
 
 echo "Installing basic dependencies"
 sudo apt-get install vim git curl apt-transport-https snapd htop
@@ -49,7 +51,7 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 curl -s https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
 echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" | sudo tee -a /etc/apt/sources.list.d/signal-xenial.list
 
-# FISH
+# fish
 sudo apt-add-repository ppa:fish-shell/release-3
 
 # update sources
@@ -99,6 +101,9 @@ echo "Installing oh-my-fish"
 curl -L https://get.oh-my.fish | fish
 
 
-echo "NOT INSTALLED: LATEX (http://tug.org/texlive/quickinstall.html)
+echo "NOT INSTALLED: LATEX (http://tug.org/texlive/quickinstall.html)"
 
+
+echo "Installing additional utilities"
+sudo apt install exfat-fuse exfat-utils sl
 
