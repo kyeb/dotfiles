@@ -1,7 +1,8 @@
 " kyeb vimrc
 
-" TODO: find a color scheme
-" colorscheme 
+" Colorscheme 
+set background=dark
+colorscheme solarized
 
 syntax enable                       " enables syntax processing (whatever that means)
 filetype indent on
@@ -22,7 +23,6 @@ set backspace=indent,eol,start      " reasonable backspace settings
 set incsearch                       " search as characters are entered
 set hlsearch                        " highlight matches
 
-
 set mouse+=a                        " enable mouse movement, scrolling, selection 
 
 " Shortcuts
@@ -32,4 +32,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 
 nnoremap j gj
 nnoremap k gk
+
+" Custom syntax highlighting
+au BufRead,BufNewFile ~/.config/sway/config set filetype=i3config
 
