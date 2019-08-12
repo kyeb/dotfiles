@@ -1,7 +1,5 @@
-# Default config for sway
-#
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
+# Kye's config for sway. Started with default, then modified.
+
 # Read `man 5 sway` for a complete reference.
 
 ### Variables
@@ -23,6 +21,10 @@ set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+
+output * bg /mnt/shared/pictures/wallpapers/99794.jpg fill
+
+
 #
 # Example configuration:
 #
@@ -74,9 +76,6 @@ default_border pixel
 #
     # start a terminal
     bindsym $mod+Return exec $term
-
-    # start a browser
-    bindsym $mod+w exec "env GDK_BACKEND=wayland firefox"
 
     # kill focused window
     bindsym $mod+Shift+q kill
@@ -227,7 +226,32 @@ bar {
     }
 }
 
-include /etc/sway/config.d/*
+#
+# Custom keybindings
+#
+# toggle gaps
+bindsym $mod+g gaps inner all plus 10
+bindsym $mod+shift+g gaps inner all minus 10
 
-xwayland disable
+# start web browser
+bindsym $mod+w exec env GDK_BACKEND=wayland firefox
+
+# rofi
+bindsym $mod+period exec rofi -show drun -display-drun ":"
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 10
+
+# Volume controls
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-
+bindsym XF86AudioMute exec amixer set Master toggle
+
+# Media controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+
 

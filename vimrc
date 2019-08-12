@@ -25,14 +25,26 @@ set hlsearch                        " highlight matches
 
 set mouse+=a                        " enable mouse movement, scrolling, selection 
 
+" Fix a couple default file annoyances and undo options
+let g:netrw_dirhistmax=0            " disable some weird annoying .netrwhist file
+set backupdir=~/.vim/.backup//
+set directory=~/.vim/.swp//
+set undodir=~/.vim/.undo//
+set viminfofile=~/.vim/.viminfo     " move .viminfo out of $HOME
+
+set undofile                        " enable persistent undo
+
+
 " Shortcuts
 let mapleader = ","                 " leader is ','
 " hide search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
-
+" up and down behave visually
 nnoremap j gj
 nnoremap k gk
+" gundo.vim
+nnoremap <leader>h :GundoToggle<CR>
 
-" Custom syntax highlighting
-au BufRead,BufNewFile ~/.config/sway/config set filetype=i3config
+" Custom syntax
+au BufRead,BufNewFile */sway/config set filetype=i3config
 
