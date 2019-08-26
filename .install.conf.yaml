@@ -1,0 +1,24 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- clean: ['~', '~/.config']
+
+- link:
+    ~/.vim:
+    ~/.vimrc:
+    ~/.gitconfig:
+    ~/.config/alacritty/alacritty.yml:
+        force: true
+    ~/.config/sway:
+    ~/.config/rofi:
+
+
+
+
+- shell:
+  - [git submodule update --init --recursive, Installing submodules]
+  - [mkdir -p ~/code, Creating code directory]
+  - [mkdir -p ~/.vim/.undo ~/.vim/.backup ~/.vim/.swp, Creating vim directories]
+

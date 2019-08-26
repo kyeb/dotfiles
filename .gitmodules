@@ -1,0 +1,15 @@
+[submodule "dotbot"]
+	path = dotbot
+	url = https://github.com/anishathalye/dotbot
+[submodule "vim/pack/kyeb/start/vim-colors-solarized"]
+	path = vim/pack/theme/start/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule "vim/pack/plugin/start/gundo.vim"]
+	path = vim/pack/plugin/start/gundo.vim
+	url = git@github.com:sjl/gundo.vim.git
+[submodule "vim/pack/plugin/start/VimCompletesMe"]
+	path = vim/pack/plugin/start/VimCompletesMe
+	url = git@github.com:ajh17/VimCompletesMe.git
+[submodule "vim/pack/plugin/start/vim-commentary"]
+	path = vim/pack/plugin/start/vim-commentary
+	url = git@github.com:tpope/vim-commentary.git

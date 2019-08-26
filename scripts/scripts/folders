@@ -1,8 +1,0 @@
-# You can add comments to these files with #
-d	~/Downloads
-m	/mnt/shared/mit	
-p   /mnt/shared/projects
-P	/mnt/shared/pictures
-w	/mnt/windows/Users/kyeb
-s	~/scripts
-c	~/.config
