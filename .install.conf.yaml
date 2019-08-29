@@ -13,6 +13,7 @@
         force: true
     ~/.config/sway:
     ~/.config/rofi:
+    ~/.config/nnn:
 
 
 

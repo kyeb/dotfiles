@@ -75,7 +75,7 @@ rofi.drun-show-actions:              false
 ! "Tokenize input string" Set from: Default
 ! rofi.tokenize:                       true
 ! "Monitor id to show on" Set from: Default
-! rofi.m:                              -5
+rofi.m:                               0
 ! "Margin between rows *DEPRECATED*" Set from: Default
 ! rofi.line-margin:                    2
 ! "Padding within rows *DEPRECATED*" Set from: Default
@@ -133,7 +133,7 @@ rofi.drun-show-actions:              false
 ! "The display name of this browser" Set from: Default
 ! rofi.display-ssh:                    
 ! "The display name of this browser" Set from: Default
-! rofi.display-drun:                   
+rofi.display-drun:                   
 ! "The display name of this browser" Set from: Default
 ! rofi.display-combi:                  
 ! "The display name of this browser" Set from: Default

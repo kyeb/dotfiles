@@ -15,7 +15,7 @@ set $right l
 set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu rofi -show drun | xargs swaymsg exec --
 
 ### Output configuration
 output * bg /mnt/shared/pictures/wallpapers/99794.jpg fill
@@ -221,8 +221,11 @@ bindsym $mod+shift+g gaps inner all minus 10
 # start web browser
 bindsym $mod+w exec env GDK_BACKEND=wayland firefox
 
+# file browser
+bindsym $mod+n exec alacritty -e n
+
 # rofi
-bindsym $mod+period exec rofi -show drun -display-drun ":"
+bindsym $mod+period exec $menu
 
 # Sreen brightness controls
 bindsym XF86MonBrightnessUp exec light -A 10
