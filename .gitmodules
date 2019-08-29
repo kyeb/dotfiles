@@ -9,7 +9,7 @@
 	url = git@github.com:sjl/gundo.vim.git
 [submodule "vim/pack/plugin/start/VimCompletesMe"]
 	path = vim/pack/plugin/start/VimCompletesMe
-	url = git@github.com:ajh17/VimCompletesMe.git
+	url = https://github.com/ajh17/VimCompletesMe
 [submodule "vim/pack/plugin/start/vim-commentary"]
 	path = vim/pack/plugin/start/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
