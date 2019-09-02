@@ -202,8 +202,9 @@ bar {
 
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
-    status_command while date +'%B %d %l:%M %P'; do sleep 1; done
-
+    # status_command while date +'%B %d %l:%M %P'; do sleep 1; done
+    status_command /home/kyeb/.config/sway/status.py
+    font Source Code Pro,Font Awesome 5 Free 10
     colors {
         statusline #ffffff
         background #323232
