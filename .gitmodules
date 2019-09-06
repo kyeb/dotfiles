@@ -13,3 +13,6 @@
 [submodule "vim/pack/plugin/start/vim-commentary"]
 	path = vim/pack/plugin/start/vim-commentary
 	url = git@github.com:tpope/vim-commentary.git
+[submodule "vim/pack/plugin/start/nerdtree"]
+	path = vim/pack/plugin/start/nerdtree
+	url = git@github.com:scrooloose/nerdtree.git

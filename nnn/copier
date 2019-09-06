@@ -2,5 +2,5 @@
 
 SELECTION=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection
 
-cat "$SELECTION" | xargs -0 | wl-copy
+cat "$SELECTION" | wl-copy
 

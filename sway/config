@@ -18,7 +18,7 @@ set $term alacritty
 set $menu rofi -show drun | xargs swaymsg exec --
 
 ### Output configuration
-output * bg /mnt/shared/pictures/wallpapers/99794.jpg fill
+output * bg /mnt/shared/pictures/backgrounds/img_20151220_144303.jpg fill
 
 #
 # Example configuration:
@@ -39,6 +39,7 @@ exec swayidle -w \
     timeout 300 '/home/kyeb/.config/sway/lock.sh' \
     timeout 360 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
+    # timeout 60 'systemctl hibernate' \
     before-sleep '/home/kyeb/.config/sway/lock.sh' \
 
 ### Input configuration

@@ -53,6 +53,16 @@ nnoremap <leader>h :GundoToggle<CR>
 " TODO: fix this
 " nnoremap <CR>/ gcc
 
+" Nerdtree bindings
+" Open nerdtree on `vim`
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Open nerdtree on `vim dir`
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+" Close vim when only nerdtree remains
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 " Custom syntax and commenting
 au BufRead,BufNewFile */sway/config set filetype=i3config
 au FileType python setlocal commentstring=#\ %s
