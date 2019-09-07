@@ -1,9 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "vim/pack/kyeb/start/vim-colors-solarized"]
-	path = vim/pack/theme/start/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/pack/plugin/start/gundo.vim"]
 	path = vim/pack/plugin/start/gundo.vim
 	url = git@github.com:sjl/gundo.vim.git
@@ -16,3 +13,6 @@
 [submodule "vim/pack/plugin/start/nerdtree"]
 	path = vim/pack/plugin/start/nerdtree
 	url = git@github.com:scrooloose/nerdtree.git
+[submodule "vim/pack/theme/start/onedark.vim"]
+	path = vim/pack/theme/opt/onedark.vim
+	url = git@github.com:joshdick/onedark.vim.git

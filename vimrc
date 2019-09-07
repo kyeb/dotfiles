@@ -1,8 +1,10 @@
 " kyeb vimrc
 
 " Colorscheme 
-set background=dark
-colorscheme solarized
+packadd! onedark.vim
+let g:onedark_termcolors=24
+let g:onedark_terminal_italics=1
+colorscheme onedark
 
 " Cursor
 let &t_SI = "\<Esc>[6 q"
