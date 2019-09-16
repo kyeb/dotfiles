@@ -5,6 +5,9 @@ packadd! onedark.vim
 let g:onedark_termcolors=24
 let g:onedark_terminal_italics=1
 colorscheme onedark
+if (has("termguicolors"))
+    set termguicolors
+endif
 
 " Cursor
 let &t_SI = "\<Esc>[6 q"
@@ -52,7 +55,7 @@ nnoremap k gk
 " gundo.vim shortcut
 nnoremap <leader>h :GundoToggle<CR>
 " vim-commentary shortcut to match other editors
-" TODO: fix this
+" TODO: fix commenting
 " nnoremap <CR>/ gcc
 
 " Nerdtree bindings
@@ -68,4 +71,5 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " Custom syntax and commenting
 au BufRead,BufNewFile */sway/config set filetype=i3config
 au FileType python setlocal commentstring=#\ %s
+autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 

@@ -36,11 +36,12 @@ output * bg /mnt/shared/pictures/backgrounds/img_20151220_144303.jpg fill
 # The last line should lock my screen before my computer goes to sleep 
 
 exec swayidle -w \
-    timeout 300 '/home/kyeb/.config/sway/lock.sh' \
-    timeout 360 'swaymsg "output * dpms off"' \
-    resume 'swaymsg "output * dpms on"' \
-    # timeout 60 'systemctl hibernate' \
     before-sleep '/home/kyeb/.config/sway/lock.sh' \
+    timeout 600 '/home/kyeb/.config/sway/lock.sh' \
+    timeout 660 'swaymsg "output * dpms off"' \
+    resume 'swaymsg "output * dpms on"' \
+    timeout 1200 'systemctl suspend' \
+    # timeout 60 'systemctl hibernate' \
 
 ### Input configuration
 #
