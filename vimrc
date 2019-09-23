@@ -73,3 +73,6 @@ au BufRead,BufNewFile */sway/config set filetype=i3config
 au FileType python setlocal commentstring=#\ %s
 autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 
+" Custom file type options
+au BufRead,BufNewFile *.md setlocal textwidth=80    " Markdown auto-wraps at 80
+au FileType c setlocal shiftwidth=2 softtabstop=2   " C files get 2 spaces for tab
