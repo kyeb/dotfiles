@@ -16,3 +16,9 @@
 [submodule "vim/pack/theme/start/onedark.vim"]
 	path = vim/pack/theme/opt/onedark.vim
 	url = git@github.com:joshdick/onedark.vim.git
+[submodule "vim/pack/plugin/start/vim-airline"]
+	path = vim/pack/plugin/start/vim-airline
+	url = git@github.com:vim-airline/vim-airline.git
+[submodule "vim/pack/plugin/start/vim-fugitive"]
+	path = vim/pack/plugin/start/vim-fugitive
+	url = git@github.com:tpope/vim-fugitive.git

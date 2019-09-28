@@ -41,8 +41,8 @@ set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
 set undodir=~/.vim/.undo//
 set viminfofile=~/.vim/.viminfo     " move .viminfo out of $HOME
-
 set undofile                        " enable persistent undo
+set ttimeoutlen=0                   " fix the delay when pressing escape
 
 
 " Shortcuts
