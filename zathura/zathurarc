@@ -1,1 +1,8 @@
-set smooth-scroll true
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+
+map R rotate
+map p print
+
+map . toggle_statusbar
+map = adjust_window width

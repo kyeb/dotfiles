@@ -1,17 +1,14 @@
-# Kye's config for sway. Started with default, then modified.
-
-# Read `man 5 sway` for a complete reference.
+# Kye's config for sway.
 
 ### Variables
 #
-# se Mod1 for Alt, Mod4 for Windows
+# Use Mod1 for Alt, Mod4 for Windows
 set $mod Mod1
 # Home row direction keys, like vim
 set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
 set $term alacritty
 # Your preferred application launcher
 # Note: it's recommended that you pass the final command to sway
@@ -20,7 +17,6 @@ set $menu rofi -show drun | xargs swaymsg exec --
 ### Output configuration
 output * bg /mnt/shared/pictures/backgrounds/img_20151220_144303.jpg fill
 
-#
 # Example configuration:
 #
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
@@ -41,7 +37,6 @@ exec swayidle -w \
     timeout 660 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
     timeout 1200 'systemctl suspend' \
-    # timeout 60 'systemctl hibernate' \
 
 ### Input configuration
 #
@@ -205,7 +200,7 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%B %d %l:%M %P'; do sleep 1; done
-    status_command /home/kyeb/.config/sway/status.py
+    status_command /home/kyeb/.config/sway/scripts/status.py
     font Source Code Pro,Font Awesome 5 Free 10
     colors {
         statusline #ffffff
@@ -223,6 +218,7 @@ bindsym $mod+shift+g gaps inner all minus 10
 
 # start web browser
 bindsym $mod+w exec env GDK_BACKEND=wayland firefox
+# bindsym $mod+w exec google-chrome-beta
 
 # file browser
 bindsym $mod+n exec alacritty -e n
@@ -249,4 +245,15 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Move workspaces between monitors. For some reason, this works like a toggle.
 bindsym Mod1+Shift+m move workspace to output left
+
+# Telegram and Mailspring bindings
+
+exec mailspring
+exec telegram-desktop
+
+for_window [class="Mailspring"] move scratchpad
+for_window [class="Mailspring"] resize set 1280 800
+
+for_window [class="Telegram"] move scratchpad
+for_window [class="Telegram"] resize set 800 550
 

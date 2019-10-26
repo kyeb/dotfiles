@@ -68,6 +68,9 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Close vim when only nerdtree remains
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
+" Airline options
+let g:airline#extensions#tabline#enabled = 1
+
 " Custom syntax and commenting
 au BufRead,BufNewFile */sway/config set filetype=i3config
 au FileType python setlocal commentstring=#\ %s

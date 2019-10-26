@@ -25,7 +25,7 @@ def write(data):
 def refresh():
     cpu = str(cpu_percent()).rjust(4)
 
-    mem = check_output("/home/kyeb/.config/sway/memory.sh").strip().decode('utf-8')
+    mem = check_output("/home/kyeb/.config/sway/scripts/memory.sh").strip().decode('utf-8')
 
     disk = bytes2human(disk_usage('/').free)
 
