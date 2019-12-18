@@ -49,6 +49,6 @@ fi
 
 alias ll="ls -la"
 
-eval $(dircolors -b $HOME/.dircolors)
-
+# Load nvm
+source /usr/share/nvm/init-nvm.sh
 
