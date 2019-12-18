@@ -36,10 +36,10 @@ export NNN_COPIER="/home/kyeb/.config/nnn/copier"
 export NNN_RESTRICT_NAV_OPEN=1
 
 source $ZSH/oh-my-zsh.sh
+disable r
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
-export PAGER=bat
 
 if which exa &>/dev/null ; then
     alias ls="exa"

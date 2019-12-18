@@ -32,8 +32,8 @@ output * bg /mnt/shared/pictures/backgrounds/img_20151220_144303.jpg fill
 # The last line should lock my screen before my computer goes to sleep 
 
 exec swayidle -w \
-    before-sleep '/home/kyeb/.config/sway/lock.sh' \
-    timeout 600 '/home/kyeb/.config/sway/lock.sh' \
+    before-sleep '/home/kyeb/.config/sway/scripts/lock.sh' \
+    timeout 600 '/home/kyeb/.config/sway/scripts/lock.sh' \
     timeout 660 'swaymsg "output * dpms off"' \
     resume 'swaymsg "output * dpms on"' \
     timeout 1200 'systemctl suspend' \
@@ -235,8 +235,8 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer set Master toggle
 
-# Lock on Windows+L
-bindsym Mod4+l exec /home/kyeb/.config/sway/lock.sh
+# Lock on Windows+L, just like good ol' Windows 10!
+bindsym Mod4+l exec /home/kyeb/.config/sway/scripts/lock.sh
 
 # Media controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -245,6 +245,9 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Move workspaces between monitors. For some reason, this works like a toggle.
 bindsym Mod1+Shift+m move workspace to output left
+
+# Screenshot hotkey
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
 # Telegram and Mailspring bindings
 

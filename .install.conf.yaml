@@ -17,9 +17,6 @@
     ~/.config/nnn:
     ~/.config/zathura:
 
-
-
-
 - shell:
   - [git submodule update --init --recursive, Installing submodules]
   - [mkdir -p ~/code, Creating code directory]

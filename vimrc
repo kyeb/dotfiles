@@ -79,3 +79,4 @@ autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 " Custom file type options
 au BufRead,BufNewFile *.md setlocal textwidth=80    " Markdown auto-wraps at 80
 au FileType c setlocal shiftwidth=2 softtabstop=2   " C files get 2 spaces for tab
+au FileType h setlocal shiftwidth=2 softtabstop=2   " C files get 2 spaces for tab
