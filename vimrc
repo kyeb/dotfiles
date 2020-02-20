@@ -40,7 +40,9 @@ let g:netrw_dirhistmax=0            " disable some weird annoying .netrwhist fil
 set backupdir=~/.vim/.backup//
 set directory=~/.vim/.swp//
 set undodir=~/.vim/.undo//
-set viminfofile=~/.vim/.viminfo     " move .viminfo out of $HOME
+if v:version > 705
+    set viminfofile=~/.vim/.viminfo     " move .viminfo out of $HOME
+endif
 set undofile                        " enable persistent undo
 set ttimeoutlen=0                   " fix the delay when pressing escape
 
