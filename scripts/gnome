@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# Script to launch a GNOME session with one simple command from tty
+XDG_SESSION_TYPE=wayland dbus-run-session gnome-session
+

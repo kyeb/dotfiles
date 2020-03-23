@@ -1,14 +1,5 @@
 " kyeb vimrc
 
-" Colorscheme 
-packadd! onedark.vim
-let g:onedark_termcolors=24
-let g:onedark_terminal_italics=1
-colorscheme onedark
-if (has("termguicolors"))
-    set termguicolors
-endif
-
 " Cursor
 let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
@@ -72,6 +63,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " Airline options
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_extensions = []
 
 " Custom syntax and commenting
 au BufRead,BufNewFile */sway/config set filetype=i3config

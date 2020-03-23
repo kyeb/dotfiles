@@ -15,7 +15,7 @@ set $term alacritty
 set $menu rofi -show drun | xargs swaymsg exec --
 
 ### Output configuration
-output * bg /mnt/shared/pictures/backgrounds/img_20151220_144303.jpg fill
+output * bg /mnt/shared/pictures/wallpapers/mountains.jpg fill
 
 # Example configuration:
 #

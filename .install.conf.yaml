@@ -9,6 +9,7 @@
     ~/.zshrc:
     ~/.vim:
     ~/.vimrc:
+    ~/.scripts:
     ~/.gitconfig:
     ~/.config/alacritty/alacritty.yml:
         force: true

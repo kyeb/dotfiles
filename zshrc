@@ -1,8 +1,8 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/kyeb/.oh-my-zsh"
+
+export PATH=$PATH:~/.scripts
 
 PROMPT="%F{red}[%F{yellow}%n%F{green}@%F{blue}%m %F{5}%~%F{red}]%f$ "
 
@@ -48,7 +48,13 @@ else
 fi
 
 alias ll="ls -la"
+alias r="R -q --no-save"
 
 # Load nvm
 source /usr/share/nvm/init-nvm.sh
+
+# Set QT theme if in GNOME
+[ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
+
+source /home/kyeb/.config/broot/launcher/bash/br
 
