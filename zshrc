@@ -1,6 +1,6 @@
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/kyeb/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 export PATH=$PATH:~/.scripts
 
@@ -51,10 +51,8 @@ alias ll="ls -la"
 alias r="R -q --no-save"
 
 # Load nvm
-source /usr/share/nvm/init-nvm.sh
+[ -d "/usr/share/nvm" ] && source /usr/share/nvm/init-nvm.sh || echo "nvm not found."
 
 # Set QT theme if in GNOME
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
-
-source /home/kyeb/.config/broot/launcher/bash/br
 
