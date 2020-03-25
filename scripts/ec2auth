@@ -1,17 +1,18 @@
 #!/bin/bash
 
-# Usage: ec2auth <instance>
+# Usage: ec2auth <instance name>
 #
-# Script to automatically authorize ssh
+# Script to automatically authorize ssh to instances from a configuration file
+# 
 # Depends on AWS CLI being installed and configured and a file
 # called `instances` in the same directory, with the following format:
-# <shorthand name> <instance id> <current ip range in cidr>
+# <instance name> <instance id> <current ip range>
 # 
-# <shorthand name> is what you will use to invoke the script on an instance
-# <instance id> can be found in the ec2 dashboard
-# <current ip range in cidr> is the current SSH inbound traffic rule for the instance's group
+# <instance name> is what you will use to invoke the script on an instance
+# <instance id> can be found in the ec2 dashboard and is used to uniquely identify an instance
+# <current ip range> is the current SSH inbound traffic rule for the instance's group, in CIDR notation
 
-[ "$#" -ne 1 ] && echo "Usage: ec2auth <instance>"; exit 1
+[ "$#" -ne 1 ] && echo "Usage: ec2auth <instance>" && exit 1
 
 set -e
 echo "Setting inbound SSH for ec2..."
@@ -30,7 +31,7 @@ aws ec2 revoke-security-group-ingress --group-id $GROUP_ID --protocol tcp --port
 aws ec2 authorize-security-group-ingress --group-id $GROUP_ID --protocol tcp --port 22 --cidr $MY_IP/32 
 
 aws ec2 update-security-group-rule-descriptions-ingress --group-id $GROUP_ID --ip-permissions \
-    "[{\"IpProtocol\": \"tcp\", \"FromPort\": 22, \"ToPort\": 22, \"IpRanges\": [{\"CidrIp\": \"$PREV_IP\", \"Description\": \"SSH for $HOSTNAME\"}]}]"
+    "[{\"IpProtocol\": \"tcp\", \"FromPort\": 22, \"ToPort\": 22, \"IpRanges\": [{\"CidrIp\": \"$PREV_IP\", \"Description\": \"SSH for $HOSTNAME\"}]}]" > /dev/null
 
 awk -i inplace -v ip="$MY_IP/32" -v instance=$1 \
     '{if ($1==instance) {print $1" "$2" "ip} else {print}}' "$DIR/instances"
