@@ -1,2 +1,3 @@
 # ignore temporary vim directories
 vim/.*
+scripts/instances

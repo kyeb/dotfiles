@@ -56,3 +56,6 @@ alias r="R -q --no-save"
 # Set QT theme if in GNOME
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
+# AWS CLI completions
+which aws_completer &> /dev/null&& autoload bashcompinit && bashcompinit; complete -C "$(which aws_completer)" aws
+
