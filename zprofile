@@ -6,3 +6,6 @@ if [[ ! "$SSH_AUTH_SOCK" ]]; then
         eval "$(<"/tmp/ssh-agent.env")" > /dev/null
 fi
 
+# Cleaning up home directory woohoo
+export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
+

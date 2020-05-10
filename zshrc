@@ -49,6 +49,9 @@ fi
 
 alias ll="ls -la"
 alias r="R -q --no-save"
+alias e="exit"
+alias v="vim"
+alias sv="sudo vim"
 
 # Load nvm
 [ -d "/usr/share/nvm" ] && source /usr/share/nvm/init-nvm.sh || echo "nvm not found."
