@@ -1,23 +1,20 @@
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/$USER/.oh-my-zsh"
+[ -d "/home/$USER/.oh-my-zsh" ] && export ZSH="/home/$USER/.oh-my-zsh" && source $ZSH/oh-my-zsh.sh
 
 export PATH=$PATH:~/.scripts
 
 PROMPT="%F{red}[%F{yellow}%n%F{green}@%F{blue}%m %F{5}%~%F{red}]%f$ "
 
 unsetopt beep
+setopt appendhistory autocd
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=100000
-setopt appendhistory autocd
 
 HYPHEN_INSENSITIVE="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
@@ -31,21 +28,13 @@ n() {
             rm $NNN_TMPFILE
     fi
 }
-# No idea if this works yet or not.
-export NNN_COPIER="/home/kyeb/.config/nnn/copier"
-export NNN_RESTRICT_NAV_OPEN=1
 
-source $ZSH/oh-my-zsh.sh
 disable r
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-if which exa &>/dev/null ; then
-    alias ls="exa"
-else
-    echo "Using ls. (exa not found)"
-fi
+which exa &>/dev/null && alias ls="exa"
 
 alias ll="ls -la"
 alias r="R -q --no-save"
@@ -54,11 +43,8 @@ alias v="vim"
 alias sv="sudo vim"
 
 # Load nvm
-[ -d "/usr/share/nvm" ] && source /usr/share/nvm/init-nvm.sh || echo "nvm not found."
+[ -d "/usr/share/nvm" ] && source /usr/share/nvm/init-nvm.sh
 
 # Set QT theme if in GNOME
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
-
-# AWS CLI completions
-which aws_completer &> /dev/null&& autoload bashcompinit && bashcompinit; complete -C "$(which aws_completer)" aws
 
