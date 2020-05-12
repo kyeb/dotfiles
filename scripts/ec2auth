@@ -11,6 +11,10 @@
 # <instance name> is what you will use to invoke the script on an instance
 # <instance id> can be found in the ec2 dashboard and is used to uniquely identify an instance
 # <current ip range> is the current SSH inbound traffic rule for the instance's group, in CIDR notation
+# 
+# Notes for usage on Arch Linux:
+# sudo pacman -S bind-tools aws-cli
+# aws configure
 
 [ "$#" -ne 1 ] && echo "Usage: ec2auth <instance>" && exit 1
 
