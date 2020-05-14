@@ -1,6 +1,5 @@
-
 # Path to your oh-my-zsh installation.
-[ -d "/home/$USER/.oh-my-zsh" ] && export ZSH="/home/$USER/.oh-my-zsh" && source $ZSH/oh-my-zsh.sh
+[ -d "/home/$USER/.oh-my-zsh" ] && export ZSH="/home/$USER/.oh-my-zsh"
 
 export PATH=$PATH:~/.scripts
 
@@ -48,3 +47,5 @@ alias sv="sudo vim"
 # Set QT theme if in GNOME
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
+# Load oh-my-zsh
+[ -d "/home/$USER/.oh-my-zsh" ] && source $ZSH/oh-my-zsh.sh
