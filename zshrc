@@ -25,6 +25,7 @@ disable r
 
 export VISUAL=vim
 export EDITOR="$VISUAL"
+export LESS="-FRX"
 
 which R &>/dev/null && alias r="R -q --no-save"
 which exa &>/dev/null && alias ls="exa"
