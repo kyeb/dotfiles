@@ -11,8 +11,7 @@
     ~/.vim:
     ~/.vimrc:
     ~/.scripts:
-    ~/.config/alacritty/alacritty.yml:
-        force: true
+    ~/.config/alacritty:
     ~/.config/sway:
     ~/.config/rofi:
     ~/.config/nnn:
