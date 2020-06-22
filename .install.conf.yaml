@@ -17,6 +17,7 @@
     ~/.config/rofi:
     ~/.config/nnn:
     ~/.config/zathura:
+    ~/.xinitrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

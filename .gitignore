@@ -1,3 +1,11 @@
 # ignore temporary vim directories
 vim/.*
+
+# description of instances for scripts
 scripts/instances
+
+# build files for suckless tools
+*.pkg.tar
+*.tar.gz
+dwm/pkg
+dwm/src
