@@ -249,13 +249,9 @@ bindsym Mod1+Shift+m move workspace to output left
 # Screenshot hotkey
 bindsym Print exec grim -g "$(slurp)" - | wl-copy
 
-# Telegram and Mailspring bindings
+# Telegram
 
-exec mailspring
 exec telegram-desktop
-
-for_window [class="Mailspring"] move scratchpad
-for_window [class="Mailspring"] resize set 1280 800
 
 for_window [class="Telegram"] move scratchpad
 for_window [class="Telegram"] resize set 800 550
