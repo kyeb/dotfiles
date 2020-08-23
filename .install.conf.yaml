@@ -8,18 +8,31 @@
 - link:
     ~/.zshrc:
     ~/.zprofile:
+    ~/.oh-my-zsh: ohmyzsh
+    ~/.oh-my-zsh/plugins:
+        path: ohmyzsh-plugins/*
+        glob: true
     ~/.vim:
     ~/.vimrc:
     ~/.scripts:
     ~/.config/alacritty:
     ~/.config/sway:
+    ~/.config/i3:
+    ~/.config/i3blocks:
+    ~/.config/picom.conf:
     ~/.config/rofi:
     ~/.config/nnn:
     ~/.config/zathura:
     ~/.xinitrc:
 
+- create:
+    - ~/downloads
+    - ~/code
+    - ~/.vim/.undo
+    - ~/.vim/.backup
+    - ~/.vim/.swp
+    - ~/.cache/zsh
+
 - shell:
-  - [git submodule update --init --recursive, Installing submodules]
-  - [mkdir -p ~/code, Creating code directory]
-  - [mkdir -p ~/.vim/.undo ~/.vim/.backup ~/.vim/.swp, Creating vim directories]
+    - [git submodule update --init --recursive, Installing submodules]
 

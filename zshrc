@@ -28,7 +28,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 # TODO: add zsh-syntax-highlighting install to .install.conf.yaml
 
 # disable annoying default exit terminal on r
@@ -55,7 +55,7 @@ alias f='code $(fzf)'
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # Load oh-my-zsh
-[ -d "$HOME/.oh-my-zsh" ] && source $ZSH/oh-my-zsh.sh
+[ -d "$HOME/.oh-my-zsh" ] && source $ZSH/oh-my-zsh.sh || echo "oh-my-zsh not found"
 
 # Stripe stuff
 if [ "$HOST" = "st-kyeb1" ]; then

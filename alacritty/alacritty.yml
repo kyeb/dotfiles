@@ -49,7 +49,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: buttonless
+  # decorations: buttonless
 
   # Startup Mode (changes require restart)
   #
@@ -81,7 +81,7 @@ scrolling:
 font:
   normal:
     # Default (Linux): monospace
-    family: SauceCodePro Nerd Font
+    family: Source Code Pro
     style: Regular
 
   # Bold font face
@@ -107,7 +107,7 @@ font:
     #style: Italic
 
   # Point size
-  size: 11.0
+  size: 9.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
