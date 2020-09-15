@@ -28,8 +28,7 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
-# TODO: add zsh-syntax-highlighting install to .install.conf.yaml
+plugins=(git zsh-syntax-highlighting)
 
 # disable annoying default exit terminal on r
 disable r
