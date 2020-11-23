@@ -455,6 +455,7 @@ key_bindings:
   - { key: Subtract, mods: Control,       action: DecreaseFontSize }
   - { key: Minus,    mods: Control,       action: DecreaseFontSize }
   - { key: Return,   mods: Alt,           action: ToggleFullscreen }
+  - { key: K,        mods: Control|Shift, action: ClearHistory     }
 
   # (macOS only)
   #- { key: Key0,   mods: Command,         action: ResetFontSize    }

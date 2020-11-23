@@ -45,6 +45,8 @@ alias e="exit"
 alias v="vim"
 alias sv="sudo vim"
 alias f='code $(fzf)'
+alias ssh="env TERM=xterm-256color ssh"
+alias i="yay -S"
 
 
 # Load nvm

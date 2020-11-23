@@ -6,10 +6,10 @@
 # 
 # Depends on AWS CLI being installed and configured and a file
 # called `instances` in the same directory, with the following format:
-# <instance name> <instance id> <current ip range>
+# <instance name> <security group id> <current ip range>
 # 
 # <instance name> is what you will use to invoke the script on an instance
-# <instance id> can be found in the ec2 dashboard and is used to uniquely identify an instance
+# <security group id> can be found in the ec2 dashboard and is used to uniquely identify a security group
 # <current ip range> is the current SSH inbound traffic rule for the instance's group, in CIDR notation
 # 
 # Notes for usage on Arch Linux:
@@ -19,25 +19,23 @@
 [ "$#" -ne 1 ] && echo "Usage: ec2auth <instance>" && exit 1
 
 set -e
+# debugging:
+set -x
 
 DIR="$(cd "$(dirname "$0")" && pwd )"
-INSTANCE_ID="$(awk "/$1/"'{ print $2 }' "$DIR/instances")"
+GROUP_ID="$(awk "/$1/"'{ print $2 }' "$DIR/instances")"
 PREV_IP="$(awk "/$1/"'{ print $3 }' "$DIR/instances")"
 
-[ -z $INSTANCE_ID ] && echo "Error: <instance> must exist in your instances file" && exit 1
+[ -z $GROUP_ID ] && echo "Error: <instance> must exist in your instances file" && exit 1
 
 MY_IP="$(dig +short myip.opendns.com @resolver1.opendns.com)"
-
-GROUP_ID="$(aws ec2 describe-instance-attribute \
-    --instance-id "$INSTANCE_ID" --attribute groupSet \
-    | awk '/GROUPS/ { print $2 }')"
 
 echo "Setting inbound SSH for $1"
 aws ec2 revoke-security-group-ingress --group-id $GROUP_ID --protocol tcp --port 22 --cidr $PREV_IP || echo "Failed to remove previous rule"
 aws ec2 authorize-security-group-ingress --group-id $GROUP_ID --protocol tcp --port 22 --cidr $MY_IP/32 
 
 aws ec2 update-security-group-rule-descriptions-ingress --group-id $GROUP_ID --ip-permissions \
-    "[{\"IpProtocol\": \"tcp\", \"FromPort\": 22, \"ToPort\": 22, \"IpRanges\": [{\"CidrIp\": \"$PREV_IP\", \"Description\": \"SSH for $HOSTNAME\"}]}]" > /dev/null
+    "[{\"IpProtocol\": \"tcp\", \"FromPort\": 22, \"ToPort\": 22, \"IpRanges\": [{\"CidrIp\": \"$MY_IP/32\", \"Description\": \"SSH for $HOSTNAME\"}]}]" > /dev/null
 
 awk -i inplace -v ip="$MY_IP/32" -v instance=$1 \
     '{if ($1==instance) {print $1" "$2" "ip} else {print}}' "$DIR/instances"

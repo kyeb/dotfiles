@@ -237,8 +237,17 @@ mode "$mode_gaps_outer" {
 ### custom stuffs ###
 exec --no-startup-id picom -b
 exec nitrogen --restore
-exec --no-startup-id stretchly
 bindsym $mod+w exec firefox
-bindsym $mod+x exec systemctl suspend
-# todo: not working right at the moment
-bindsym Print exec --release ~/.scripts/i3-screenshot
+bindsym $mod+x exec sudo pm-suspend
+bindsym --release Print exec escrotum '/tmp/%F_%T_$w$h.png' -s -C 
+bindsym --release $mod+Print exec escrotum -s -e 'mv $f ~/images/screensots/'
+
+exec telegram-desktop
+exec slack
+
+for_window [class="TelegramDesktop"] move scratchpad
+for_window [class="TelegramDesktop"] resize set 800 550
+
+for_window [class="Slack"] move scratchpad
+for_window [class="Slack"] resize set 1200 700
+

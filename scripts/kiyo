@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Small script to run a few commands to control the exposure on my webcam
+
+set -x
+
+if [ "$1" = "auto" ]; then
+    v4l2-ctl -d /dev/video0 -c exposure_auto=3
+else
+    v4l2-ctl -d /dev/video0 -c exposure_auto=3
+    sleep 1
+    v4l2-ctl -d /dev/video0 -c exposure_auto=1
+    v4l2-ctl -d /dev/video0 -c exposure_absolute="$1"
+fi
+
