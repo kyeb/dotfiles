@@ -7,15 +7,12 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" "~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting", Installing zsh-syntax-highlighting]
+    - [sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc, Installing oh-my-zsh]
+    - [git clone "https://github.com/zsh-users/zsh-syntax-highlighting.git" "$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting", Installing zsh-syntax-highlighting]
 
 - link:
     ~/.zshrc:
     ~/.zprofile:
-    ~/.oh-my-zsh: ohmyzsh
-    ~/.oh-my-zsh/plugins:
-        path: ohmyzsh-plugins/*
-        glob: true
     ~/.vim:
     ~/.vimrc:
     ~/.scripts:
