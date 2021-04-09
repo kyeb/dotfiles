@@ -5,8 +5,19 @@ let &t_SI = "\<Esc>[6 q"
 let &t_SR = "\<Esc>[4 q"
 let &t_EI = "\<Esc>[0 q"
 
-syntax enable                       " enables syntax processing (whatever that means)
-filetype indent on
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'vim-airline/vim-airline'
+Plug 'sheerun/vim-polyglot'
+Plug 'preservim/nerdtree'
+
+call plug#end()
 
 " Tab settings
 set tabstop=4                       " number of visual spaces per <TAB>
@@ -73,5 +84,8 @@ autocmd BufNewFile,BufFilePre,BufRead *.md set filetype=markdown.pandoc
 
 " Custom file type options
 au BufRead,BufNewFile *.md setlocal textwidth=80    " Markdown auto-wraps at 80
-au FileType c setlocal shiftwidth=2 softtabstop=2   " C files get 2 spaces for tab
-au FileType h setlocal shiftwidth=2 softtabstop=2   " C files get 2 spaces for tab
+" 2-space indent for *.{c,h,js}
+au FileType c setlocal shiftwidth=2 softtabstop=2
+au FileType h setlocal shiftwidth=2 softtabstop=2
+au FileType js setlocal shiftwidth=2 softtabstop=2
+
