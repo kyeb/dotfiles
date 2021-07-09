@@ -66,9 +66,11 @@ if [ "$HOST" = "st-kyeb1" ]; then
     source ~/.bashrc
     eval "$(nodenv init -)"
     compdef _git stripe-git=git
-    export PATH=$PATH:~/stripe/scripts
-    source ~/.stripe/stripe-aliases.zsh
+    export PATH=$PATH:~/stripe/scripts:~/stripe/gh-cli/bin
+    source ~/stripe/scripts/stripe-aliases.zsh
 fi
 
 set -o vi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
