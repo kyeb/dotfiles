@@ -3,6 +3,9 @@
 
 export PATH=$PATH:~/.scripts
 
+command -v go > /dev/null 2>&1 && export PATH=$PATH:$(go env GOPATH)/bin
+
+
 PROMPT="%F{red}[%F{yellow}%n%F{green}@%F{blue}%m %F{5}%~%F{red}]%f$ "
 
 unsetopt beep
@@ -33,7 +36,7 @@ plugins=(git zsh-syntax-highlighting)
 # disable annoying default exit terminal on r
 disable r
 
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LESS="-FRX"
 
@@ -43,11 +46,15 @@ which exa &>/dev/null && alias ls="exa"
 alias ll="ls -la"
 alias e="exit"
 alias v="vim"
+alias n="nvim"
+alias vim="nvim"
 alias sv="sudo vim"
-alias f='code $(fzf)'
+alias sn="sudo nvim"
+alias f='nvim $(fzf)'
 alias ssh="env TERM=xterm-256color ssh"
-alias i="yay -S"
 
+# TODO: Arch environment only
+alias i="yay -S"
 
 # Load nvm
 [ -d "/usr/share/nvm" ] && source /usr/share/nvm/init-nvm.sh
@@ -66,11 +73,15 @@ if [ "$HOST" = "st-kyeb1" ]; then
     source ~/.bashrc
     eval "$(nodenv init -)"
     compdef _git stripe-git=git
-    export PATH=$PATH:~/stripe/scripts:~/stripe/gh-cli/bin
+    export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin:$HOME/stripe/work/exe
     source ~/stripe/scripts/stripe-aliases.zsh
 fi
 
 set -o vi
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set up fzf
+if [ -f ~/.fzf.zsh ]; then
+  source ~/.fzf.zsh
+  export FZF_DEFAULT_COMMAND='rg --files'
+fi
 
