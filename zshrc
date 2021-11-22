@@ -5,7 +5,6 @@ export PATH=$PATH:~/.scripts
 
 command -v go > /dev/null 2>&1 && export PATH=$PATH:$(go env GOPATH)/bin
 
-
 PROMPT="%F{red}[%F{yellow}%n%F{green}@%F{blue}%m %F{5}%~%F{red}]%f$ "
 
 unsetopt beep
@@ -56,8 +55,7 @@ alias ssh="env TERM=xterm-256color ssh"
 # TODO: Arch environment only
 alias i="yay -S"
 
-# Load nvm
-[ -d "/usr/share/nvm" ] && source /usr/share/nvm/init-nvm.sh
+command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 
 # Set QT theme if in GNOME
 [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
@@ -71,7 +69,6 @@ if [ "$HOST" = "st-kyeb1" ]; then
     autoload -Uz bashcompinit; bashcompinit
     source ~/.bash_profile
     source ~/.bashrc
-    eval "$(nodenv init -)"
     compdef _git stripe-git=git
     export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin:$HOME/stripe/work/exe
     source ~/stripe/scripts/stripe-aliases.zsh
