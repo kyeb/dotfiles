@@ -66,10 +66,10 @@ map('<C-s>', ':w')
 
 -- Telescope
 map('<leader><leader>', "<cmd>lua require('telescope').extensions.frecency.frecency()<CR>")
-map('<leader>f', '<cmd>Telescope find_files<CR>')
-map('<leader>g', '<cmd>Telescope live_grep<CR>')
-map('<leader>b', '<cmd>Telescope buffers<CR>')
-map('<leader>b', '<cmd>Telescope buffers<CR>')
+map('<leader>ff', '<cmd>Telescope find_files<CR>')
+map('<leader>fg', '<cmd>Telescope live_grep<CR>')
+map('<leader>fb', '<cmd>Telescope buffers<CR>')
+map('<leader>fb', '<cmd>Telescope buffers<CR>')
 
 -- git-blame
 -- TODO: author formatting as username instead of display name
