@@ -44,8 +44,8 @@ vim.cmd [[colorscheme nightfly]]
 -- shortcuts
 --
 ----------------
+local opts = { noremap=true, silent=true }
 local map = function(key, cmd)
-  local opts = { noremap=true, silent=true }
   vim.api.nvim_set_keymap('n', key, cmd, opts)
 end
 
@@ -53,6 +53,10 @@ end
 map('<Leader><Space>', ':set hlsearch!<CR>')
 -- copy current path to clipboard
 map('<Leader>cp', ':let @" = expand("%")<CR>')
+-- easier exit from terminal
+vim.cmd('tnoremap <C-a> <C-\\><C-n>')
+-- easy save
+map('<C-s>', ':w')
 
 ----------------
 --
