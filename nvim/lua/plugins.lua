@@ -16,14 +16,6 @@ return require('packer').startup(function()
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
-  use {
-    "nvim-telescope/telescope-frecency.nvim",
-    config = function()
-      require"telescope".load_extension("frecency")
-    end,
-    requires = {"tami5/sqlite.lua"}
-  }
-
 
   use 'mhinz/vim-signify'
   use 'f-person/git-blame.nvim'
