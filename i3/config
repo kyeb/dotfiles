@@ -251,3 +251,4 @@ for_window [class="TelegramDesktop"] resize set 800 550
 for_window [class="Slack"] move scratchpad
 for_window [class="Slack"] resize set 1200 700
 
+exec xrdb ~/.Xresources

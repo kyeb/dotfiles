@@ -29,6 +29,7 @@
     ~/.config/sway:
     ~/.config/zathura:
     ~/.xinitrc:
+    ~/.Xresources:
 
 - create:
     - ~/downloads
