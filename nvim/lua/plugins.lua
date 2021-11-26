@@ -19,6 +19,7 @@ return require('packer').startup(function()
 
   use 'mhinz/vim-signify'
   use 'f-person/git-blame.nvim'
+  use 'rhysd/conflict-marker.vim'
 
   use 'bluz71/vim-nightfly-guicolors'
 end)

@@ -1,11 +1,9 @@
+require('plugins')
+
 local cmd  = vim.cmd
 local opt  = vim.opt
 local g    = vim.g
 local exec = vim.api.nvim_exec
-
--- plugin setup is in lua/plugins.lua
-require('plugins')
-local telescope = require('telescope.builtin')
 
 ----------------
 --
@@ -56,15 +54,18 @@ map('<Leader>cp', ':let @" = expand("%")<CR>')
 -- easier exit from terminal
 vim.cmd('tnoremap <C-a> <C-\\><C-n>')
 -- easy save
-map('<C-s>', ':w')
+map('<C-s>', ':w<CR>')
 
 ----------------
 --
 -- plugin setup
 --
 ----------------
+-- installed plugins are defined in lua/plugins.lua
 
 -- Telescope
+local telescope = require('telescope.builtin')
+
 map('<leader><leader>', "<cmd>lua require('telescope').extensions.frecency.frecency()<CR>")
 map('<leader>ff', '<cmd>Telescope find_files<CR>')
 map('<leader>fg', '<cmd>Telescope live_grep<CR>')
