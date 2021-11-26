@@ -1,6 +1,8 @@
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
+  use 'mhartington/formatter.nvim'
+
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'

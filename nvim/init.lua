@@ -81,6 +81,47 @@ map('<Leader>gb', '<cmd>GitBlameToggle<CR>')
 
 ----------------
 --
+-- formatting
+--
+----------------
+local formatter = require('formatter')
+
+-- uses pretterd (https://github.com/fsouza/prettierd)
+-- install: npm install -g @fsouza/prettierd
+local function format_prettier()
+  return {
+    exe = 'prettierd',
+    args = {vim.api.nvim_buf_get_name(0)},
+    stdin = true,
+  }
+end
+
+local function format_luafmt()
+  return {
+    exe = 'npx luafmt',
+    args = {vim.api.nvim_buf_get_name(0)},
+    stdin = false,
+  }
+end
+
+formatter.setup({
+  filetype = {
+    javascript = {format_prettier},
+    typescript = {format_prettier},
+    typescriptreact = {format_prettier},
+    lua = {format_luafmt},
+  }
+})
+
+exec([[
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePost *.js,*.ts,*.jsx,*.tsx,*.lua FormatWrite
+  augroup END
+]], true)
+
+----------------
+--
 -- tree-sitter, lsp, & null-ls
 --
 ----------------
@@ -155,4 +196,3 @@ for _, server in ipairs(servers) do
     }
   }
 end
-
