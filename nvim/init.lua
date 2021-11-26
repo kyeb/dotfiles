@@ -96,27 +96,18 @@ local function format_prettier()
   }
 end
 
-local function format_luafmt()
-  return {
-    exe = 'npx luafmt',
-    args = {vim.api.nvim_buf_get_name(0)},
-    stdin = false,
-  }
-end
-
 formatter.setup({
   filetype = {
     javascript = {format_prettier},
     typescript = {format_prettier},
     typescriptreact = {format_prettier},
-    lua = {format_luafmt},
   }
 })
 
 exec([[
   augroup FormatAutogroup
     autocmd!
-    autocmd BufWritePost *.js,*.ts,*.jsx,*.tsx,*.lua FormatWrite
+    autocmd BufWritePost *.js,*.ts,*.jsx,*.tsx FormatWrite
   augroup END
 ]], true)
 
