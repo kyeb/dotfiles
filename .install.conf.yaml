@@ -16,7 +16,6 @@
 - link:
     ~/.zshrc:
     ~/.zprofile:
-    ~/.vim:
     ~/.vimrc:
     ~/.scripts:
     ~/.config/alacritty:

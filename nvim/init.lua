@@ -152,38 +152,29 @@ end
 
 -- null-ls config copied from sodiumjoe (https://github.com/sodiumjoe/dotfiles)
 local null_ls = require("null-ls")
-local null_ls_helpers = require("null-ls.helpers")
 
--- in lua, `0` evaluates as truthy
-local function is_executable(bin)
-  return vim.fn.executable(bin) > 0
-end
-
-local sources = {
-  -- eslint
-  null_ls_helpers.conditional(function()
-    return is_executable("eslint_d") and null_ls.builtins.diagnostics.eslint_d.with({
+null_ls.setup({
+  sources = {
+    null_ls.builtins.diagnostics.eslint_d.with({
       cwd = function(params)
         return require("lspconfig/util").root_pattern(".eslintrc.js")(params.bufname)
       end
-    })
-    or is_executable("eslint") and null_ls.builtins.diagnostics.eslint.with({
-      cwd = function(params)
+    }),
+    null_ls.builtins.formatting.eslint_d.with({
+		  cwd = function(params)
         return require("lspconfig/util").root_pattern(".eslintrc.js")(params.bufname)
-      end
+      end,
     })
-  end),
-}
+  }
+})
 
-null_ls.config({ sources = sources })
-
-local servers = {'flow', 'null-ls'}
+local servers = {'flow'}
 
 for _, server in ipairs(servers) do
-  lsp[server].setup {
+  lsp[server].setup({
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     }
-  }
+  })
 end

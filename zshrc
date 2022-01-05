@@ -64,7 +64,7 @@ command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 [ -d "$HOME/.oh-my-zsh" ] && source $ZSH/oh-my-zsh.sh || echo "oh-my-zsh not found"
 
 # Stripe stuff
-if [ "$HOST" = "st-kyeb1" ]; then
+if [[ "$HOST" == st-kyeb* ]]; then
     autoload -Uz compinit; compinit
     autoload -Uz bashcompinit; bashcompinit
     source ~/.bash_profile
