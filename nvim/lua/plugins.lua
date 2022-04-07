@@ -1,8 +1,11 @@
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
+  -- formatting
+  -- TODO: can null-ls do all of this?
   use 'mhartington/formatter.nvim'
 
+  -- lsp stuff
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate'
@@ -19,9 +22,14 @@ return require('packer').startup(function()
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
 
+  -- git stuff
   use 'mhinz/vim-signify'
   use 'f-person/git-blame.nvim'
   use 'rhysd/conflict-marker.vim'
 
+  -- appearance
   use 'bluz71/vim-nightfly-guicolors'
+
+  -- other utils
+  use 'jiangmiao/auto-pairs'
 end)
