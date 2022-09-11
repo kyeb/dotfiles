@@ -120,7 +120,35 @@ exec([[
 --
 ----------------
 local ts = require 'nvim-treesitter.configs'
-ts.setup {ensure_installed = 'maintained', highlight = {enable = true}}
+ts.setup {
+  ensure_installed = {
+    "latex",
+    "python",
+    "ruby",
+    "java",
+    "javascript",
+    "typescript",
+    "json",
+    "yaml",
+    "tsx",
+    "html",
+    "css",
+    "scss",
+    "proto",
+    "c",
+    "cpp",
+    "go",
+    "gomod",
+    "lua",
+    "rust",
+    "toml",
+    "gitignore",
+    "verilog",
+    "markdown",
+    "markdown_inline",
+  },
+  highlight = {enable = true}
+}
 
 local lsp = require('lspconfig')
 
