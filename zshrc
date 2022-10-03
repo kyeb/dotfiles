@@ -5,12 +5,12 @@ export PATH=$PATH:~/.scripts
 
 command -v go > /dev/null 2>&1 && export GOPATH=$(go env GOPATH) && export PATH=$PATH:$GOPATH/bin
 
-PROMPT="%F{red}[%F{yellow}%n%F{green}@%F{blue}%m %F{5}%~%F{red}]%f$ "
-
 # Old prompt; leaving here for now
-# ZSH_THEME="typewritten/typewritten"
-# TYPEWRITTEN_DISABLE_RETURN_CODE=true
-# TYPEWRITTEN_RELATIVE_PATH="adaptive"
+# PROMPT="%F{red}[%F{yellow}%n%F{green}@%F{blue}%m %F{5}%~%F{red}]%f$ "
+
+ZSH_THEME="typewritten/typewritten"
+TYPEWRITTEN_DISABLE_RETURN_CODE=true
+TYPEWRITTEN_RELATIVE_PATH="adaptive"
 
 unsetopt beep
 setopt appendhistory autocd
