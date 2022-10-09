@@ -70,13 +70,22 @@ command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 
 # Stripe stuff
 if [[ "$HOST" == st-kyeb* ]]; then
-    autoload -Uz compinit; compinit
-    autoload -Uz bashcompinit; bashcompinit
-    source ~/.bash_profile
-    source ~/.bashrc
-    compdef _git stripe-git=git
-    export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin:$HOME/stripe/work/exe
-    source ~/stripe/scripts/stripe-aliases.zsh
+  autoload -Uz compinit; compinit
+  autoload -Uz bashcompinit; bashcompinit
+  source ~/.bash_profile
+  source ~/.bashrc
+  compdef _git stripe-git=git
+  export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin:$HOME/stripe/work/exe
+  source ~/stripe/scripts/stripe-aliases.zsh
+fi
+
+# WSL setup
+if [[ -d /mnt/wsl ]]; then
+  echo 'setting up WSL display...'
+  # https://stackoverflow.com/a/64233268
+  export DISPLAY_NUMBER="0.0"
+  export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):$DISPLAY_NUMBER
+  export LIBGL_ALWAYS_INDIRECT=1
 fi
 
 set -o vi
