@@ -1,0 +1,44 @@
+#!/usr/bin/env sh
+
+# Decent overview of options here
+# https://github.com/koekeishiya/yabai/wiki/Configuration
+# https://github.com/koekeishiya/yabai/blob/master/doc/yabai.asciidoc
+
+# bar settings
+yabai -m config top_padding 0
+
+# global settings
+yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          autofocus
+
+yabai -m config window_placement             second_child
+
+yabai -m config split_type                   auto
+yabai -m config split_ratio                  0.50
+yabai -m config auto_balance                 off
+
+# Mouse support
+yabai -m config mouse_modifier               alt
+yabai -m config mouse_action1                move
+yabai -m config mouse_action2                resize
+
+# general space settings
+yabai -m config layout                       bsp
+yabai -m config bottom_padding               0
+yabai -m config left_padding                 0
+yabai -m config right_padding                0
+yabai -m config window_gap                   0
+
+# Disable management of certain windows
+yabai -m rule --add app='^System Information$' manage=off
+yabai -m rule --add app='^System Settings$' manage=off
+yabai -m rule --add title='Preferences$' manage=off
+yabai -m rule --add title='Settings$' manage=off
+yabai -m rule --add app='^Finder$' manage=off
+yabai -m rule --add app='^Slack$' manage=off
+
+# permanently hide dock
+defaults write com.apple.dock autohide-delay -float 1000; killall Dock
+
+echo "yabai configuration loaded"
+

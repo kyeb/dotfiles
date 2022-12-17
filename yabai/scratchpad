@@ -1,0 +1,14 @@
+#!/bin/sh
+
+minimized_wid=$(yabai -m query --windows | jq '.[] | select(.["is-minimized"] == true).id')
+
+if [ "$minimized_wid" = "" ]; then
+  current_wid=$(yabai -m query --windows | jq '.[] | select(.["has-focus"] == true).id')
+  yabai -m window "$current_wid" --minimize
+  yabai -m window --focus mouse
+else
+  current_space=$(yabai -m query --spaces --space | jq '.index')
+  yabai -m window "$minimized_wid" --space "$current_space"
+  yabai -m window "$minimized_wid" --focus
+fi
+

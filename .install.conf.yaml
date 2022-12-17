@@ -28,6 +28,8 @@
     ~/.config/rofi:
     ~/.config/sway:
     ~/.config/zathura:
+    ~/.config/yabai:
+    ~/.config/skhd:
     ~/.xinitrc:
     ~/.Xresources:
 
