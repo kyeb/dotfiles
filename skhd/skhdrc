@@ -70,11 +70,11 @@
 #
 #               an EOL character signifies the end of the bind.
 
-# Quickly restart skhd
-alt - r : skhd --reload
+# Quickly reload skhd config
+alt + shift - r : skhd --reload && osascript -e 'display notification "config reloaded" with title "skhd"'
 
-# terminal
-alt - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
+# New terminal. If already focused on a terminal, use Alacritty's shortcut so the new one opens with the same cwd
+alt - return : [ $(yabai -m query --windows | jq '.[] | select(.["has-focus"]).app') = '"Alacritty"' ] && skhd --key "cmd - n" || /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # change focus
 alt - l :     yabai -m window --focus east
@@ -104,12 +104,8 @@ shift + ctrl - j : yabai -m window --warp south || $(yabai -m window sibling --i
 
 cmd + ctrl - m : yabai -m window sibling --insert stack ; yabai -m window --warp sibling
 
-# Double toggle the float state of a window to force it to unstack (useful if
-# its the only stack in a partition)
-cmd + ctrl - u : yabai -m window --toggle float ; yabai -m window --toggle float 
-
 # move focused window to next/prev workspace
-# Note: SIP is disabled so yabai can't create or focus a specific space
+# Note: SIP is enabled so yabai can't create or focus a specific space
 alt + shift - 1 : yabai -m window --space 1
 alt + shift - 2 : yabai -m window --space 2
 alt + shift - 3 : yabai -m window --space 3
@@ -120,20 +116,17 @@ alt + shift - 7 : yabai -m window --space 7
 alt + shift - 8 : yabai -m window --space 8
 alt + shift - 9 : yabai -m window --space 9
 
-## change layout of desktop
-cmd + ctrl - t : yabai -m space --layout bsp
-cmd + ctrl - s : yabai -m space --layout stack
+# change layout of desktop
+# alt + shift - t : yabai -m space --layout bsp
+# alt + shift - s : yabai -m space --layout stack
 
-# Toggle window properties
-cmd + ctrl - g : yabai -m window --toggle native-fullscreen
-cmd + ctrl - f : yabai -m window --toggle zoom-fullscreen
-cmd + ctrl - p : yabai -m window --toggle zoom-parent
+# toggle window split type (horizontal / vertical)
+alt - i : yabai -m window --toggle split
 
 # Float and center
 alt - f : yabai -m window --toggle float ; yabai -m window --grid 4:4:1:1:2:2
 alt - w : yabai -m window --close
 
-# Scratchpad-like functionality, using semicolon (0x29 = ;)
-
+# Single-window scratchpad-like functionality, using semicolon (0x29 = ;)
 alt - 0x29 : /Users/kyeb/.dotfiles/yabai/scratchpad
 
