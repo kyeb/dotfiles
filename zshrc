@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 [ -d "$HOME/.oh-my-zsh" ] && export ZSH="$HOME/.oh-my-zsh"
 
-export PATH=$PATH:~/.scripts
+export PATH=$PATH:~/.scripts:~/.local/bin
 
 command -v go > /dev/null 2>&1 && export GOPATH=$(go env GOPATH) && export PATH=$PATH:$GOPATH/bin
 
