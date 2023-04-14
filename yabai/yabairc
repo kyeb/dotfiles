@@ -36,6 +36,7 @@ yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add title='Settings$' manage=off
 yabai -m rule --add app='^Finder$' manage=off
 yabai -m rule --add app='^Slack$' manage=off
+yabai -m rule --add app='^MeetingBar$' manage=off
 
 # permanently hide dock
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock

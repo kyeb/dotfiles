@@ -74,17 +74,17 @@
 alt + shift - r : skhd --reload && osascript -e 'display notification "config reloaded" with title "skhd"'
 
 # New terminal. If already focused on a terminal, use Alacritty's shortcut so the new one opens with the same cwd
-alt - return : [ $(yabai -m query --windows | jq '.[] | select(.["has-focus"]).app') = '"Alacritty"' ] && skhd --key "cmd - n" || /Applications/Alacritty.app/Contents/MacOS/alacritty
+alt + shift - return : [ $(yabai -m query --windows | jq '.[] | select(.["has-focus"]).app') = '"Alacritty"' ] && skhd --key "cmd - n" || /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # change focus
-alt - l :     yabai -m window --focus east
-alt - right : yabai -m window --focus east
-alt - h :     yabai -m window --focus west
-alt - left :  yabai -m window --focus west
-alt - k :     yabai -m window --focus north
-alt - up :    yabai -m window --focus north
-alt - j :     yabai -m window --focus south
-alt - down :  yabai -m window --focus south
+alt - l :     yabai -m window --focus east  || yabai -m display --focus  east
+alt - right : yabai -m window --focus east  || yabai -m display --focus  east
+alt - h :     yabai -m window --focus west  || yabai -m display --focus  west
+alt - left :  yabai -m window --focus west  || yabai -m display --focus  west
+alt - k :     yabai -m window --focus north || yabai -m display --focus north
+alt - up :    yabai -m window --focus north || yabai -m display --focus north
+alt - j :     yabai -m window --focus south || yabai -m display --focus south
+alt - down :  yabai -m window --focus south || yabai -m display --focus south
 
 # shift window within current workspace
 alt + shift - l     : yabai -m window --warp east  || $(yabai -m window --display  east; yabai -m display --focus  east)
