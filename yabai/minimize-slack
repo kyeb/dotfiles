@@ -4,5 +4,11 @@ set -e
 
 slack_id=$(yabai -m query --windows | jq '.[] | select(.app == "Slack").id')
 
-yabai -m window --minimize $slack_id
+sleep 1
+
+current_app=$(yabai -m query --windows --window | jq --raw-output ".app")
+
+if [ $current_app != "Slack" ]; then
+  yabai -m window --minimize $slack_id
+fi
 
