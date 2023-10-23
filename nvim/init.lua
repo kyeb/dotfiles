@@ -245,3 +245,6 @@ for _, server in ipairs(servers) do
     }
   })
 end
+
+require('Comment').setup()
+
