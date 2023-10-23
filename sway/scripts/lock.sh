@@ -1,4 +1,4 @@
 #!/bin/bash
 
-swaylock -f -i /mnt/shared/pictures/backgrounds/img_20151220_144303.jpg
+swaylock -f -i /home/kyeb/pictures/backgrounds/mountain-stream.jpg
 

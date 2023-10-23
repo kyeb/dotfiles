@@ -29,23 +29,9 @@ def refresh():
 
     disk = bytes2human(disk_usage('/').free)
 
-    try:
-        ssid = " " + check_output("iwgetid -r", shell=True).strip().decode('utf-8')
-    except Exception:
-        ssid = ""
-
-    batteryicons = ""
-    if sensors_battery() is not None:
-        plugged = sensors_battery().power_plugged 
-        battery = int(sensors_battery().percent)
-        batteryicons += icons["charging"] if plugged else ""
-        batteryicons += icons[(battery // 25) * 25] if battery > 5 else icons["empty"]
-    else:
-        battery = "?"
-
     date = datetime.now().strftime('%h %d %A %H:%M')
 
-    output = f"{ssid} |  {cpu} |  {mem} |  {disk} | {batteryicons} {battery}% | {date}"
+    output = f" {cpu} | 󰍛 {mem} |  {disk} | {date}"
     write(output)
 
 while True:
