@@ -39,9 +39,9 @@ yabai -m rule --add app='^Finder$' manage=off
 yabai -m rule --add app='^Slack$' manage=off sticky=on
 yabai -m rule --add app='^Spotify$' space=10 grid='8:8:1:1:6:6'
 yabai -m rule --add app='^MeetingBar$' manage=off
-yabai -m signal --add event=application_deactivated app='^Slack$' action='$HOME/.config/yabai/minimize-slack'
+yabai -m signal --add event=application_front_switched app='^Slack$' action='$HOME/.config/yabai/minimize-slack'
 
-# permanently hide dock
+# attempt to permanently hide dock
 defaults write com.apple.dock autohide-delay -float 1000; killall Dock
 
 echo "yabai configuration loaded"
