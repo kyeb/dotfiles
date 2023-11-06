@@ -91,8 +91,12 @@ fi
 set -o vi
 
 # Set up fzf
+export FZF_DEFAULT_COMMAND='rg --files'
 if [ -f ~/.fzf.zsh ]; then
   source ~/.fzf.zsh
-  export FZF_DEFAULT_COMMAND='rg --files'
+fi
+if [ -f /usr/share/fzf/key-bindings.zsh ]; then
+  source /usr/share/fzf/key-bindings.zsh
+  source /usr/share/fzf/completion.zsh
 fi
 
