@@ -87,7 +87,9 @@ if [[ -d /mnt/wsl ]]; then
 fi
 
 # macOS setup stuff
-eval "$(/opt/homebrew/bin/brew shellenv)"
+if [[ -d /opt/homebrew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
 
 set -o vi
 
