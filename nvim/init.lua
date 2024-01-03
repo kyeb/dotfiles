@@ -147,7 +147,9 @@ ts.setup {
     "markdown",
     "markdown_inline",
   },
-  highlight = {enable = true}
+  highlight = {
+    enable = true
+  }
 }
 
 local lsp = require('lspconfig')
@@ -179,71 +181,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
-end
-
--- TODO: clean up map functions
--- local buf_map = function(bufnr, mode, lhs, rhs, opts)
---     vim.api.nvim_buf_set_keymap(bufnr, mode, lhs, rhs, opts or {
---         silent = true,
---     })
--- end
--- 
--- TODO: enable only for .ts files
--- lsp.tsserver.setup({
---     on_attach = function(client, bufnr)
---         client.resolved_capabilities.document_formatting = false
---         client.resolved_capabilities.document_range_formatting = false
---         local ts_utils = require("nvim-lsp-ts-utils")
---         ts_utils.setup({})
---         ts_utils.setup_client(client)
---         buf_map(bufnr, "n", "gs", ":TSLspOrganize<CR>")
---         buf_map(bufnr, "n", "gi", ":TSLspRenameFile<CR>")
---         buf_map(bufnr, "n", "go", ":TSLspImportAll<CR>")
---         on_attach(client, bufnr)
---     end,
--- })
-
--- Stripe-specific Ruby config
-lsp.sorbet.setup({
-  cmd = { "pay", "exec", "scripts/bin/typecheck", "--lsp" },
-  filetypes = { "ruby" },
-  root_dir = lsp.util.root_pattern(".git"),
-})
-
--- null-ls config copied from sodiumjoe (https://github.com/sodiumjoe/dotfiles)
-local null_ls = require("null-ls")
-local null_ls_helpers = require("null-ls.helpers")
-
-null_ls.setup({
-  sources = {
-    null_ls.builtins.diagnostics.eslint_d.with({
-      cwd = function(params)
-        return require("lspconfig/util").root_pattern(".eslintrc.js")(params.bufname)
-      end
-    }),
-    null_ls.builtins.code_actions.eslint_d.with({
-      cwd = function(params)
-        return require("lspconfig/util").root_pattern(".eslintrc.js")(params.bufname)
-      end,
-    }),
-    null_ls.builtins.diagnostics.rubocop.with({
-      condition = function(utils)
-        return utils.root_has_file("scripts/bin/rubocop-daemon/rubocop")
-      end,
-      command = "scripts/bin/rubocop-daemon/rubocop",
-    })
-  }
-})
-
-local servers = {'flow'}
-
-for _, server in ipairs(servers) do
-  lsp[server].setup({
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    }
-  })
 end
 
 require('Comment').setup()
