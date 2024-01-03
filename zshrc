@@ -11,6 +11,7 @@ command -v go > /dev/null 2>&1 && export GOPATH=$(go env GOPATH) && export PATH=
 ZSH_THEME="typewritten/typewritten"
 TYPEWRITTEN_DISABLE_RETURN_CODE=true
 TYPEWRITTEN_RELATIVE_PATH="adaptive"
+TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION=(echo "%F{red}$(whoami)"%F{yellow}@%F{green}"$(hostname -s)%f")
 
 unsetopt beep
 setopt appendhistory autocd
@@ -36,9 +37,6 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git zsh-syntax-highlighting)
-
-# disable annoying default exit terminal on r
-disable r
 
 export VISUAL=nvim
 export EDITOR="$VISUAL"
@@ -87,6 +85,9 @@ if [[ -d /mnt/wsl ]]; then
   export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):$DISPLAY_NUMBER
   export LIBGL_ALWAYS_INDIRECT=1
 fi
+
+# macOS setup stuff
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 set -o vi
 
