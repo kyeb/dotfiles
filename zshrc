@@ -103,3 +103,7 @@ if [ -f /usr/share/fzf/key-bindings.zsh ]; then
   source /usr/share/fzf/completion.zsh
 fi
 
+if command -v zoxide > /dev/null 2>&1; then
+  eval "$(zoxide init zsh)"
+fi
+

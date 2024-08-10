@@ -51,7 +51,7 @@ end
 map('<Leader>r', ':source $MYVIMRC<CR>')
 
 -- toggle search highlighting
-map('<Leader><Space>', ':set hlsearch!<CR>')
+map('<Leader>h', ':set hlsearch!<CR>')
 
 -- copy path to current file
 map('<Leader>cp', ':let @+ = expand("%")<CR>')
@@ -146,6 +146,7 @@ ts.setup {
     "verilog",
     "markdown",
     "markdown_inline",
+    "terraform",
   },
   highlight = {
     enable = true

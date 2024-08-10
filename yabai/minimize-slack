@@ -8,6 +8,12 @@ sleep 1
 
 current_app="$(yabai -m query --windows --window | jq --raw-output ".app")"
 
+# if slack is not open, do nothing
+slack_id=$(yabai -m query --windows | jq '.[] | select(.app == "Slack").id')
+if [ -z "$slack_id" ]; then
+  exit 0
+fi
+
 if [ "$current_app" != "Slack" ]; then
   yabai -m window --minimize $slack_id
 fi
