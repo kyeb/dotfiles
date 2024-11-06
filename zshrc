@@ -12,6 +12,7 @@ ZSH_THEME="typewritten/typewritten"
 TYPEWRITTEN_DISABLE_RETURN_CODE=true
 TYPEWRITTEN_RELATIVE_PATH="adaptive"
 TYPEWRITTEN_LEFT_PROMPT_PREFIX_FUNCTION=(echo "%F{red}$(whoami)"%F{yellow}@%F{green}"$(hostname -s)%f")
+export GIT_OPTIONAL_LOCKS=0
 
 unsetopt beep
 setopt appendhistory autocd
@@ -68,12 +69,12 @@ command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 
 # Stripe stuff
 if [[ "$HOST" == st-kyeb* ]]; then
-  autoload -Uz compinit; compinit
-  autoload -Uz bashcompinit; bashcompinit
-  source ~/.bash_profile
-  source ~/.bashrc
-  compdef _git stripe-git=git
-  export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin:$HOME/stripe/work/exe
+  # Recommended by go/zsh
+  if [[ -f ~/.stripe/shellinit/zshrc ]]; then
+    source ~/.stripe/shellinit/zshrc
+  fi
+  # Personal
+  export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin
   source ~/stripe/scripts/stripe-aliases.zsh
 fi
 
