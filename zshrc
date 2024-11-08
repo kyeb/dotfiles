@@ -21,6 +21,8 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt vi
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 ############################################################
 # Aliases
@@ -56,7 +58,9 @@ zinit wait'1' lucid for \
 
 
 # Lazy-loaded bits that are useful but can wait a few seconds before loading
-# zinit wait'5' for \
+zinit wait'2' lucid for \
+  zsh-users/zsh-history-substring-search
+
 
 ############################################################
 # Env-specific setup
