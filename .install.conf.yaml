@@ -19,6 +19,7 @@
     ~/.zshrc:
     ~/.zprofile:
     ~/.vimrc:
+    ~/.tmux.conf:
     ~/.scripts:
     ~/.config/alacritty:
     ~/.config/i3:
