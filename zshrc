@@ -29,21 +29,11 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LESS="-FRX"
 
-which R &>/dev/null && alias r="R -q --no-save"
-which exa &>/dev/null && alias ls="exa"
-
 alias ll="ls -la"
 alias e="exit"
 alias v="vim"
 alias n="nvim"
-alias vim="nvim"
-alias sv="sudo vim"
-alias sn="sudo nvim"
-alias f='nvim $(fzf)'
 alias ssh="env TERM=xterm-256color ssh"
-
-# TODO: Arch environment only
-alias i="yay -S"
 
 #################################
 # Plugins
