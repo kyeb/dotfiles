@@ -37,6 +37,57 @@ alias v="vim"
 alias n="nvim"
 alias ssh="env TERM=xterm-256color ssh"
 
+############################################################
+# Env-specific setup
+############################################################
+
+env_init() {
+  command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
+
+  # Set QT theme if in GNOME
+  [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
+
+  # Stripe stuff
+  if [[ "$HOST" == st-kyeb* ]]; then
+    # Recommended by go/zsh
+    if [[ -f ~/.stripe/shellinit/zshrc ]]; then
+      source ~/.stripe/shellinit/zshrc
+    fi
+    # Personal
+    export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin
+    source ~/stripe/scripts/stripe-aliases.zsh
+  fi
+
+  # WSL setup
+  if [[ -d /mnt/wsl ]]; then
+    echo 'setting up WSL display...'
+    # https://stackoverflow.com/a/64233268
+    export DISPLAY_NUMBER="0.0"
+    export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):$DISPLAY_NUMBER
+    export LIBGL_ALWAYS_INDIRECT=1
+  fi
+
+  if [[ -d /opt/homebrew ]]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  fi
+
+
+  # Set up fzf
+  export FZF_DEFAULT_COMMAND='rg --files'
+  if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+  fi
+
+  if [ -f /usr/share/fzf/key-bindings.zsh ]; then
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+  fi
+
+  if command -v zoxide > /dev/null 2>&1; then
+    eval "$(zoxide init zsh)"
+  fi
+}
+
 #################################
 # Plugins
 #################################
@@ -54,63 +105,14 @@ PURE_GIT_UNTRACKED_DIRTY=0
 
 # Heavily used plugins; load them first
 zinit wait'1' lucid for \
-  OMZ::plugins/git/git.plugin.zsh
+    OMZ::plugins/git/git.plugin.zsh
 
+# Important but not used constantly
+zinit ice wait'2' lucid id-as"env-init" atload'env_init'
+zinit light zdharma-continuum/null
 
 # Lazy-loaded bits that are useful but can wait a few seconds before loading
-zinit wait'2' lucid for \
+zinit wait'3' lucid for \
   zsh-users/zsh-history-substring-search
 
-
-############################################################
-# Env-specific setup
-############################################################
-
-# All of the stuff here takes ~800ms so I'm disabling it all for now, but plan to
-# add it back but with lazy initialization via zinit
-
-# command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
-# 
-# # Set QT theme if in GNOME
-# [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
-# 
-# # Stripe stuff
-# if [[ "$HOST" == st-kyeb* ]]; then
-#   # Recommended by go/zsh
-#   if [[ -f ~/.stripe/shellinit/zshrc ]]; then
-#     source ~/.stripe/shellinit/zshrc
-#   fi
-#   # Personal
-#   export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin
-#   source ~/stripe/scripts/stripe-aliases.zsh
-# fi
-# 
-# # WSL setup
-# if [[ -d /mnt/wsl ]]; then
-#   echo 'setting up WSL display...'
-#   # https://stackoverflow.com/a/64233268
-#   export DISPLAY_NUMBER="0.0"
-#   export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):$DISPLAY_NUMBER
-#   export LIBGL_ALWAYS_INDIRECT=1
-# fi
-# 
-# if [[ -d /opt/homebrew ]]; then
-#   eval "$(/opt/homebrew/bin/brew shellenv)"
-# fi
-# 
-# 
-# # Set up fzf
-# export FZF_DEFAULT_COMMAND='rg --files'
-# if [ -f ~/.fzf.zsh ]; then
-#   source ~/.fzf.zsh
-# fi
-# 
-# if [ -f /usr/share/fzf/key-bindings.zsh ]; then
-#   source /usr/share/fzf/key-bindings.zsh
-#   source /usr/share/fzf/completion.zsh
-# fi
-# 
-# if command -v zoxide > /dev/null 2>&1; then
-#   eval "$(zoxide init zsh)"
-# fi
 
