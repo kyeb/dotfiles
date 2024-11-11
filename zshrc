@@ -83,6 +83,11 @@ env_init() {
     source /usr/share/fzf/completion.zsh
   fi
 
+  if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
+    source /usr/share/doc/fzf/examples/key-bindings.zsh
+    source /usr/share/doc/fzf/examples/completion.zsh
+  fi
+
   if command -v zoxide > /dev/null 2>&1; then
     eval "$(zoxide init zsh)"
   fi
