@@ -96,17 +96,15 @@ PURE_GIT_UNTRACKED_DIRTY=0
 # Heavily used plugins; load them first
 zinit wait'1' lucid for \
     OMZ::plugins/git/git.plugin.zsh
-zinit ice wait'1' lucid id-as"fzf-init" atload'env_init'
+zinit ice wait'1' lucid id-as"zoxide-init" atload'zoxide_init'
 zinit light zdharma-continuum/null
 
 # Important but not used constantly
-zi for \
-  https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh
-zinit ice wait'2' lucid id-as"zoxide-init" atload'zoxide_init'
-zinit light zdharma-continuum/null
+zi wait'2' lucid for \
+  https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh \
+  zdharma-continuum/fast-syntax-highlighting
 
 # Lazy-loaded bits that are useful but can wait a few seconds before loading
-zinit wait'3' lucid for \
-  zsh-users/zsh-history-substring-search
-
+zinit ice wait'3' lucid id-as"env-init" atload'env_init'
+zinit light zdharma-continuum/null
 
