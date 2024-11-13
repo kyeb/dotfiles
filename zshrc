@@ -21,8 +21,8 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt vi
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^[[A' fzf-history-widget
+bindkey -M vicmd 'k' fzf-history-widget
 
 ############################################################
 # Aliases
@@ -70,24 +70,9 @@ env_init() {
   if [[ -d /opt/homebrew ]]; then
     eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
+}
 
-
-  # Set up fzf
-  export FZF_DEFAULT_COMMAND='rg --files'
-  if [ -f ~/.fzf.zsh ]; then
-    source ~/.fzf.zsh
-  fi
-
-  if [ -f /usr/share/fzf/key-bindings.zsh ]; then
-    source /usr/share/fzf/key-bindings.zsh
-    source /usr/share/fzf/completion.zsh
-  fi
-
-  if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
-    source /usr/share/doc/fzf/examples/key-bindings.zsh
-    source /usr/share/doc/fzf/examples/completion.zsh
-  fi
-
+zoxide_init() {
   if command -v zoxide > /dev/null 2>&1; then
     eval "$(zoxide init zsh)"
   fi
@@ -111,9 +96,13 @@ PURE_GIT_UNTRACKED_DIRTY=0
 # Heavily used plugins; load them first
 zinit wait'1' lucid for \
     OMZ::plugins/git/git.plugin.zsh
+zinit ice wait'1' lucid id-as"fzf-init" atload'env_init'
+zinit light zdharma-continuum/null
 
 # Important but not used constantly
-zinit ice wait'2' lucid id-as"env-init" atload'env_init'
+zi for \
+  https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh
+zinit ice wait'2' lucid id-as"zoxide-init" atload'zoxide_init'
 zinit light zdharma-continuum/null
 
 # Lazy-loaded bits that are useful but can wait a few seconds before loading
