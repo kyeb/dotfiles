@@ -21,8 +21,6 @@ setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history 
 setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt vi
-bindkey '^[[A' fzf-history-widget
-bindkey -M vicmd 'k' fzf-history-widget
 
 ############################################################
 # Aliases
@@ -78,6 +76,27 @@ zoxide_init() {
   fi
 }
 
+fzf_init() {
+  # Set up fzf
+  # The zinit fancy way of doing this always pulls keybindings from latest master,
+  # which sometimes introduces compatibility problems
+  export FZF_DEFAULT_COMMAND='rg --files'
+
+  if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+  fi
+
+  if [ -f /usr/share/fzf/key-bindings.zsh ]; then
+    source /usr/share/fzf/key-bindings.zsh
+    source /usr/share/fzf/completion.zsh
+  fi
+
+  if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
+    source /usr/share/doc/fzf/examples/key-bindings.zsh
+    source /usr/share/doc/fzf/examples/completion.zsh
+  fi
+}
+
 #################################
 # Plugins
 #################################
@@ -101,8 +120,9 @@ zinit light zdharma-continuum/null
 
 # Important but not used constantly
 zi wait'2' lucid for \
-  https://github.com/junegunn/fzf/raw/master/shell/{'completion','key-bindings'}.zsh \
   zdharma-continuum/fast-syntax-highlighting
+zinit ice wait'2' lucid id-as"fzf-init" atload'fzf_init'
+zinit light zdharma-continuum/null
 
 # Lazy-loaded bits that are useful but can wait a few seconds before loading
 zinit ice wait'3' lucid id-as"env-init" atload'env_init'
