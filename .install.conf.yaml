@@ -33,6 +33,7 @@
     ~/.config/yabai:
     ~/.config/skhd:
     ~/.xinitrc:
+    ~/.aerospace.toml:
     ~/.Xresources:
 
 - create:
