@@ -22,6 +22,9 @@ setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording en
 setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
 setopt vi
 
+# https://stackoverflow.com/questions/78444358/backspace-does-not-work-on-vim-mode-in-mac-os-terminal
+bindkey -M viins "^?" backward-delete-char
+
 ############################################################
 # Aliases
 ############################################################
