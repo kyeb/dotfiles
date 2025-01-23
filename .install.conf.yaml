@@ -11,10 +11,6 @@
     - [bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)", Installing zinit]
     - [mv ~/.zshrc ~/.zshrc.old || echo "No pre-existing zshrc", Moving old zshrc]
 
-# Tricky to get right in dotbot, so just leaving this as a command to paste in on new machines
-# sh -c $(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)  --unattended --keep-zshrc
-
-
 - link:
     ~/.zshrc:
     ~/.zprofile:
