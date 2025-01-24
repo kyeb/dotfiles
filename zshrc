@@ -133,3 +133,5 @@ zinit light zdharma-continuum/null
 zinit ice wait'3' lucid id-as"env-init" atload'env_init'
 zinit light zdharma-continuum/null
 
+zinit wait'3' lucid light-mode for lukechilds/zsh-nvm
+
