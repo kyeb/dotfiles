@@ -2,7 +2,8 @@
 # PATH
 ############################################################
 export PATH=$PATH:~/.scripts:~/.local/bin
-command -v go > /dev/null 2>&1 && export GOPATH=$(go env GOPATH) && export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 
 ############################################################
 # Shell options
@@ -44,6 +45,12 @@ alias ssh="env TERM=xterm-256color ssh"
 # Env-specific setup
 ############################################################
 
+# this can't be done lazily, or tooling that depends on brew-installed binaries
+# will fail
+if [[ -d /opt/homebrew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+fi
+
 env_init() {
   command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
 
@@ -68,10 +75,6 @@ env_init() {
     export DISPLAY_NUMBER="0.0"
     export DISPLAY=$(grep -m 1 nameserver /etc/resolv.conf | awk '{print $2}'):$DISPLAY_NUMBER
     export LIBGL_ALWAYS_INDIRECT=1
-  fi
-
-  if [[ -d /opt/homebrew ]]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 }
 
