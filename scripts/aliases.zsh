@@ -10,6 +10,7 @@ current_branch() {
   git rev-parse --abbrev-ref HEAD 2>/dev/null
 }
 
+alias gp='git push'
 alias gpsup='git push --set-upstream origin $(current_branch)'
 alias gst='git status'
 alias gsw='git switch'
