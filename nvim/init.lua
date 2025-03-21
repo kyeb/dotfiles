@@ -122,7 +122,6 @@ exec([[
 local ts = require 'nvim-treesitter.configs'
 ts.setup {
   ensure_installed = {
-    "latex",
     "python",
     "ruby",
     "java",

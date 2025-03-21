@@ -28,18 +28,11 @@ setopt vi
 # https://stackoverflow.com/questions/78444358/backspace-does-not-work-on-vim-mode-in-mac-os-terminal
 bindkey -M viins "^?" backward-delete-char
 
-############################################################
-# Aliases
-############################################################
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LESS="-FRX"
 
-alias ll="ls -la"
-alias e="exit"
-alias v="vim"
-alias n="nvim"
-alias ssh="env TERM=xterm-256color ssh"
+source ~/.scripts/aliases.zsh
 
 ############################################################
 # Env-specific setup
@@ -121,8 +114,6 @@ PURE_GIT_PULL=0
 PURE_GIT_UNTRACKED_DIRTY=0
 
 # Heavily used plugins; load them first
-zinit wait'1' lucid for \
-    OMZ::plugins/git/git.plugin.zsh
 zinit ice wait'1' lucid id-as"zoxide-init" atload'zoxide_init'
 zinit light zdharma-continuum/null
 
@@ -135,6 +126,4 @@ zinit light zdharma-continuum/null
 # Lazy-loaded bits that are useful but can wait a few seconds before loading
 zinit ice wait'3' lucid id-as"env-init" atload'env_init'
 zinit light zdharma-continuum/null
-
-zinit wait'3' lucid light-mode for lukechilds/zsh-nvm
 

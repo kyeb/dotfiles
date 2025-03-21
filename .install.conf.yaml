@@ -35,8 +35,5 @@
 - create:
     - ~/downloads
     - ~/code
-    - ~/.vim/.undo
-    - ~/.vim/.backup
-    - ~/.vim/.swp
     - ~/.cache/zsh
 
