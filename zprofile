@@ -9,3 +9,7 @@ fi
 # Cleaning up home directory woohoo
 export ANDROID_SDK_HOME="$XDG_CONFIG_HOME"/android
 
+
+# Added by OrbStack: command-line tools and integration
+# This won't be added again if you remove it.
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
