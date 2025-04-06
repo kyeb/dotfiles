@@ -37,6 +37,7 @@ alias grbi='git rebase --interactive'
 alias grba='git rebase --abort'
 alias grbc='git rebase --continue'
 alias grbs='git rebase --skip'
+alias grbm='git rebase main'
 
 alias gcp='git cherry-pick'
 
