@@ -79,7 +79,8 @@ fzf_init() {
   # Set up fzf
   export FZF_DEFAULT_COMMAND='rg --files'
 
-  source <(fzf --zsh)
+  # Trying out atuin instead of fzf for ctrl+r
+  # source <(fzf --zsh)
 }
 
 atuin_init() {
