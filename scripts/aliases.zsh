@@ -46,3 +46,8 @@ alias gds='git diff --staged'
 
 alias gl='git log'
 alias glp='git log --patch'
+
+alias gsta='git stash'
+alias gstaa='git stash apply'
+alias gstp='git stash pop'
+

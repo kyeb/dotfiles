@@ -45,8 +45,6 @@ if [[ -d /opt/homebrew ]]; then
 fi
 
 env_init() {
-  command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
-
   # Set QT theme if in GNOME
   [ "$XDG_CURRENT_DESKTOP" = "KDE" ] || [ "$XDG_CURRENT_DESKTOP" = "GNOME" ] || export QT_QPA_PLATFORMTHEME="qt5ct"
 
@@ -84,6 +82,17 @@ fzf_init() {
   source <(fzf --zsh)
 }
 
+atuin_init() {
+  . "$HOME/.atuin/bin/env"
+  eval "$(atuin init zsh)"
+}
+atuin_init
+
+nodenv_init() {
+  command -v nodenv > /dev/null 2>&1 && eval "$(nodenv init -)"
+}
+nodenv_init
+
 #################################
 # Plugins
 #################################
@@ -112,4 +121,5 @@ zinit light zdharma-continuum/null
 # Lazy-loaded bits that are useful but can wait a few seconds before loading
 zinit ice wait'3' lucid id-as"env-init" atload'env_init'
 zinit light zdharma-continuum/null
+
 
