@@ -37,6 +37,11 @@ outer.bottom =     0
 outer.top =        0
 outer.right =      0
 
+
+[[on-window-detected]]
+if.app-name-regex-substring = 'Kap'
+run = 'layout floating'
+
 [mode.main.binding]
 alt-enter = '''exec-and-forget open -n /Applications/Ghostty.app'''
 

@@ -59,6 +59,11 @@ env_init() {
     source ~/stripe/scripts/stripe-aliases.zsh
   fi
 
+  # Falconer stuff
+  if [[ "$HOST" == sequoia* ]]; then
+    source ~/.scripts/falconer-aliases.zsh
+  fi
+
   # WSL setup
   if [[ -d /mnt/wsl ]]; then
     echo 'setting up WSL display...'

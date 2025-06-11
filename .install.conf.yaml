@@ -32,6 +32,7 @@
     ~/.aerospace.toml:
     ~/.Xresources:
     ~/.config/atuin/config.toml: atuin-config.toml
+    ~/.claude/CLAUDE.md:
 
 - create:
     - ~/downloads
