@@ -31,6 +31,9 @@ bindkey -M viins "^?" backward-delete-char
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LESS="-FRX"
+export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
+# avoid git completion using branches that have been deleted locally
+export GIT_COMPLETION_CHECKOUT_NO_GUESS=1
 
 source ~/.scripts/aliases.zsh
 
@@ -107,6 +110,9 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
+# load compinit immediately so compdef works
+autoload -Uz compinit && compinit
+
 # Prompt first
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit load sindresorhus/pure
@@ -118,6 +124,9 @@ PURE_GIT_UNTRACKED_DIRTY=0
 zinit ice wait'1' lucid id-as"zoxide-init" atload'zoxide_init'
 zinit light zdharma-continuum/null
 
+zinit ice wait'1' lucid as"completion"
+zinit snippet https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
 # Important but not used constantly
 zi wait'2' lucid for \
   zdharma-continuum/fast-syntax-highlighting
@@ -128,4 +137,21 @@ zinit light zdharma-continuum/null
 zinit ice wait'3' lucid id-as"env-init" atload'env_init'
 zinit light zdharma-continuum/null
 
+# graphite completion
+zinit ice wait'2' lucid id-as"gt-completion" atload'eval "$(gt completion zsh)"'
+zinit light zdharma-continuum/null
 
+# git alias completions
+compdef _git gsw=git-switch
+compdef _git gswc=git-switch
+compdef _git gco=git-checkout
+compdef _git gb=git-branch
+compdef _git gbd=git-branch
+compdef _git gbD=git-branch
+compdef _git grb=git-rebase
+compdef _git grbi=git-rebase
+compdef _git gcp=git-cherry-pick
+compdef _git gd=git-diff
+compdef _git gds=git-diff
+compdef _git gl=git-log
+compdef _git glp=git-log
