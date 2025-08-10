@@ -138,7 +138,7 @@ zinit ice wait'3' lucid id-as"env-init" atload'env_init'
 zinit light zdharma-continuum/null
 
 # graphite completion
-zinit ice wait'2' lucid id-as"gt-completion" atload'eval "$(gt completion zsh)"'
+zinit ice wait'2' lucid id-as"gt-completion" atload'command -v gt > /dev/null 2>&1 && eval "$(gt completion zsh)"'
 zinit light zdharma-continuum/null
 
 # git alias completions
