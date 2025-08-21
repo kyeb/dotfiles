@@ -91,7 +91,7 @@ fzf_init() {
 }
 
 atuin_init() {
-  if command -v atuin > /dev/null 2>&1; then
+  if [ -f "$HOME/.atuin/bin/env" ]; then
     . "$HOME/.atuin/bin/env"
     eval "$(atuin init zsh)"
   fi
