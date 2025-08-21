@@ -35,7 +35,11 @@ export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
 # avoid git completion using branches that have been deleted locally
 export GIT_COMPLETION_CHECKOUT_NO_GUESS=1
 
+# only actual aliases here - this blocks shell loading
 source ~/.scripts/aliases.zsh
+if [[ -f ~/.scripts/falconer-aliases.zsh ]]; then
+  source ~/.scripts/falconer-aliases.zsh
+fi
 
 ############################################################
 # Env-specific setup
@@ -60,11 +64,6 @@ env_init() {
     # Personal
     export PATH=$PATH:$HOME/stripe/scripts:$HOME/stripe/gh-cli/bin
     source ~/stripe/scripts/stripe-aliases.zsh
-  fi
-
-  # Falconer stuff
-  if [[ "$HOST" == sequoia* ]]; then
-    source ~/.scripts/falconer-aliases.zsh
   fi
 
   # WSL setup
@@ -92,8 +91,10 @@ fzf_init() {
 }
 
 atuin_init() {
-  . "$HOME/.atuin/bin/env"
-  eval "$(atuin init zsh)"
+  if command -v atuin > /dev/null 2>&1; then
+    . "$HOME/.atuin/bin/env"
+    eval "$(atuin init zsh)"
+  fi
 }
 atuin_init
 

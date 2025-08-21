@@ -20,7 +20,6 @@ alias gpsup='git push --set-upstream origin $(current_branch)'
 alias gst='git status'
 alias gsw='git switch'
 alias gswc='git switch -c'
-alias gcm='git commit -m'
 alias ga='git add'
 alias gaa='git add .'
 alias gau='git add -u'
@@ -51,6 +50,14 @@ alias glp='git log --patch'
 alias gsta='git stash'
 alias gstaa='git stash apply'
 alias gstp='git stash pop'
+
+gcm() {
+  if command -v gt >/dev/null 2>&1; then
+    gt create -m "$@"
+  else
+    git commit -m "$@"
+  fi
+}
 
 # Function to create a new branch and worktree with Graphite integration
 wt() {
