@@ -33,6 +33,7 @@
     ~/.Xresources:
     ~/.config/atuin/config.toml: atuin-config.toml
     ~/.claude/CLAUDE.md:
+    ~/.config/zed/settings.json: zed/settings.json
 
 - create:
     - ~/downloads
