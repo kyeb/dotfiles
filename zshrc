@@ -34,6 +34,8 @@ export LESS="-FRX"
 export CLAUDE_BASH_MAINTAIN_PROJECT_WORKING_DIR=1
 # avoid git completion using branches that have been deleted locally
 export GIT_COMPLETION_CHECKOUT_NO_GUESS=1
+# Make Claude Code think harder
+export MAX_THINKING_TOKENS=16000
 
 # only actual aliases here - this blocks shell loading
 source ~/.scripts/aliases.zsh
