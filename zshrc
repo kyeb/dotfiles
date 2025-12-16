@@ -158,3 +158,14 @@ compdef _git gd=git-diff
 compdef _git gds=git-diff
 compdef _git gl=git-log
 compdef _git glp=git-log
+
+# bun completions
+[ -s "/Users/kyeb/.bun/_bun" ] && source "/Users/kyeb/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+# opencode
+export PATH=/Users/kyeb/.opencode/bin:$PATH
