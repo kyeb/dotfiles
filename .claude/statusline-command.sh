@@ -8,13 +8,19 @@ dir=$(basename "$cwd")
 git_branch=$(git --no-optional-locks -C "$cwd" branch --show-current 2>/dev/null)
 
 # Extract context window information
-total_input=$(echo "$input" | jq -r '.context_window.total_input_tokens')
-total_output=$(echo "$input" | jq -r '.context_window.total_output_tokens')
 context_size=$(echo "$input" | jq -r '.context_window.context_window_size')
+usage=$(echo "$input" | jq '.context_window.current_usage')
 
-# Calculate total tokens used and percentage
-total_used=$((total_input + total_output))
-usage_percent=$((total_used * 100 / context_size))
+# Calculate current context usage percentage (not cumulative)
+if [ "$usage" != "null" ]; then
+    current_input=$(echo "$usage" | jq '.input_tokens')
+    cache_creation=$(echo "$usage" | jq '.cache_creation_input_tokens')
+    cache_read=$(echo "$usage" | jq '.cache_read_input_tokens')
+    current_used=$((current_input + cache_creation + cache_read))
+    usage_percent=$((current_used * 100 / context_size))
+else
+    usage_percent=0
+fi
 
 # Rainbow colors (will cycle through these)
 rainbow_colors=(31 33 32 36 34 35)  # red, yellow, green, cyan, blue, magenta
