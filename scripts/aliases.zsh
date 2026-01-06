@@ -5,6 +5,7 @@
 alias e="exit"
 alias v="vim"
 alias n="nvim"
+alias clauded="claude --dangerously-skip-permissions"
 
 ############################################################
 # Git
@@ -51,13 +52,7 @@ alias gsta='git stash'
 alias gstaa='git stash apply'
 alias gstp='git stash pop'
 
-gcm() {
-  if command -v gt >/dev/null 2>&1; then
-    gt create -m "$@"
-  else
-    git commit -m "$@"
-  fi
-}
+alias gcm='git commit -m'
 
 # Function to create a new branch and worktree with Graphite integration
 wt() {
