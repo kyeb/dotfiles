@@ -1,0 +1,9 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- link:
+    ~/.config/hypr:
+    ~/.config/waybar:
+    ~/code/CLAUDE.md: oak-CLAUDE.md
