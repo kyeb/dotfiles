@@ -1,1 +1,0 @@
-sway swayidle swaylock swaybg wofi grim slurp wl-clipboard
