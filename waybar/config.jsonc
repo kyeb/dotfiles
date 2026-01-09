@@ -9,6 +9,8 @@
     ],
     "modules-right": [
         "network",
+        "disk",
+        "temperature",
         "cpu",
         "memory",
         "clock",
@@ -36,5 +38,13 @@
         "format-disconnected": "󰤭",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "disk": {
+        "format": "{percentage_used}% 󰋊",
+        "path": "/"
+    },
+    "temperature": {
+        "format": "{temperatureC}°C 󰔏",
+        "critical-threshold": 80
     }
 }

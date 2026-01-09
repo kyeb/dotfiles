@@ -181,7 +181,8 @@ label:focus {
 }
 
 #disk {
-    background-color: #964B00;
+    background-color: #ffffba;
+    color: #2d3436;
 }
 
 #backlight {
@@ -231,7 +232,8 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: #c9f0c9;
+    color: #2d3436;
 }
 
 #temperature.critical {
