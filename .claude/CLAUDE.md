@@ -1,5 +1,13 @@
 # kyeb user-level CLAUDE.md
 
+## Package management
+- Python: use `uv` for all dependency management
+- Node.js: default to `pnpm` and `nodenv` unless the project uses something else
+
+## Projects
+- All new projects should be created in `~/code/`
+
+## Code style
 - Only add comments if they're necessary to explain a surprising or confusing piece of code. Normally, variable and function names should be enough to make the code readable without comments.
 - When there are parentheses, quote the paths properly so that the shell doesn't try to interpret them.
 - If you're working on a linear task, link it in the PR description by adding 'Fixes FAL-123' or 'Part of FAL-456'
