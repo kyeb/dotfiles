@@ -1,0 +1,40 @@
+{
+    "height": 30,
+    "spacing": 0,
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "network",
+        "cpu",
+        "memory",
+        "clock",
+        "tray"
+    ],
+    "tray": {
+        "spacing": 10
+    },
+    "clock": {
+        "timezone": "America/Los_Angeles",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}% 󰍛",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "{}% 󰘚"
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰤭",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}"
+    }
+}

@@ -25,6 +25,8 @@
     ~/.config/picom.conf:
     ~/.config/rofi:
     ~/.config/sway:
+    ~/.config/hypr:
+    ~/.config/waybar:
     ~/.config/zathura:
     ~/.config/yabai:
     ~/.config/skhd:
