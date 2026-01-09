@@ -7,7 +7,6 @@
 
 - shell:
     - [git submodule update --init --recursive, Installing submodules]
-    - [./idempotent-clone https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim, Installing packer.nvim]
     - [bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)", Installing zinit]
     - [mv ~/.zshrc ~/.zshrc.old || echo "No pre-existing zshrc", Moving old zshrc]
 
