@@ -5,7 +5,7 @@
 alias e="exit"
 alias v="vim"
 alias n="nvim"
-alias clauded="claude --dangerously-skip-permissions"
+alias clauded="claude --allow-dangerously-skip-permissions --permission-mode plan"
 
 ############################################################
 # Git

@@ -15,7 +15,11 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
 # Machine-specific configs
-HOSTNAME=$(cat /etc/hostname)
+if [[ -f /etc/hostname ]]; then
+    HOSTNAME=$(cat /etc/hostname)
+else
+    HOSTNAME=$(hostname -s)
+fi
 if [[ -f "${BASEDIR}/${HOSTNAME}.conf.yaml" ]]; then
     "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${HOSTNAME}.conf.yaml" "${@}"
 fi
