@@ -167,3 +167,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # opencode
 export PATH=/Users/kyeb/.opencode/bin:$PATH
+
+# Machine-specific config
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

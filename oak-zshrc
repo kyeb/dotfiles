@@ -1,0 +1,2 @@
+# Oak-specific shell config
+export PATH=$PATH:~/code/oak-utils/bin

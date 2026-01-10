@@ -7,3 +7,4 @@
     ~/.config/hypr:
     ~/.config/waybar:
     ~/code/CLAUDE.md: oak-CLAUDE.md
+    ~/.zshrc.local: oak-zshrc
