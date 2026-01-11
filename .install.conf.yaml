@@ -9,6 +9,13 @@
     - [git submodule update --init --recursive, Installing submodules]
     - [bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)", Installing zinit]
     - [mv ~/.zshrc ~/.zshrc.old || echo "No pre-existing zshrc", Moving old zshrc]
+    - description: Installing zoxide and fzf
+      command: |
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+          brew install zoxide fzf
+        elif command -v pacman &> /dev/null; then
+          sudo pacman -S --needed --noconfirm zoxide fzf
+        fi
 
 - link:
     ~/.zshrc:
