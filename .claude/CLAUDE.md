@@ -5,12 +5,15 @@
 - Node.js: default to `pnpm` and `nodenv` unless the project uses something else
 
 ## Projects
-- All new projects should be created in `~/code/`
+- All new projects or clones of new repos should be in `~/code`
+- If you're looking for a project, check by listing `~/code` first
+
+## Committing
+- Never add a "co-author: claude" message to commits or pull requests.
 
 ## Code style
 - Only add comments if they're necessary to explain a surprising or confusing piece of code. Normally, variable and function names should be enough to make the code readable without comments.
 - When there are parentheses, quote the paths properly so that the shell doesn't try to interpret them.
-- If you're working on a linear task, link it in the PR description by adding 'Fixes FAL-123' or 'Part of FAL-456'
 - Prefer your Search tool, or use ripgrep to search for file contents
 - When using ripgrep, use globs to filter by file type, e.g. `rg <term> -g '*.ts*'`
 - Always use `fd` for finding specific file names or types
@@ -27,4 +30,5 @@
 - Examples:
   - To get details for FAL-385, use: `linctl issue get FAL-385`
   - Run `linctl issue --help` or `linctl issue update --help` to see other commands
+- If you're working on a linear task, link it in the PR description by adding 'Fixes FAL-123' or 'Part of FAL-456'
 
