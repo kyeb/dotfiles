@@ -36,4 +36,5 @@
     - ~/downloads
     - ~/code
     - ~/.cache/zsh
+    - ~/.local/share/pnpm
 

@@ -170,3 +170,7 @@ export PATH=/Users/kyeb/.opencode/bin:$PATH
 
 # Machine-specific config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# pnpm
+export PNPM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
+[[ -d "$PNPM_HOME" ]] && export PATH="$PNPM_HOME:$PATH"
