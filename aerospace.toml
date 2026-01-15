@@ -12,6 +12,9 @@ default-root-container-orientation = 'auto'
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = true
 
+# Auto-hide Slack scratchpad when it loses focus
+on-focus-changed = ['exec-and-forget ~/.dotfiles/aerospace/slack-autohide']
+
 # Move mouse to center on focus
 # on-focus-changed = "move-mouse window-lazy-center"
 # on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -104,6 +107,9 @@ alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
 alt-s = 'mode service'
+
+# Slack scratchpad toggle (alt + ;)
+alt-semicolon = 'exec-and-forget ~/.dotfiles/aerospace/slack-scratchpad'
 
 # 'service' binding mode declaration.
 [mode.service.binding]

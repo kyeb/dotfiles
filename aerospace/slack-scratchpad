@@ -1,0 +1,36 @@
+#!/bin/bash
+
+SCRATCHPAD_WS="S"
+APP_NAME="Slack"
+LOCKFILE="/tmp/slack-scratchpad.lock"
+
+# Get Slack window info
+slack=$(aerospace list-windows --all --format '%{window-id}|%{app-name}|%{workspace}' | grep "$APP_NAME" | head -1)
+
+if [ -z "$slack" ]; then
+  open -a Slack
+  exit 0
+fi
+
+wid=$(echo "$slack" | cut -d'|' -f1)
+ws=$(echo "$slack" | cut -d'|' -f3)
+current_ws=$(aerospace list-workspaces --focused)
+focused_wid=$(aerospace list-windows --focused --format '%{window-id}' 2>/dev/null)
+
+if [ "$ws" = "$SCRATCHPAD_WS" ]; then
+  # Hidden -> bring to current workspace as floating
+  touch "$LOCKFILE"
+  aerospace move-node-to-workspace --window-id "$wid" "$current_ws"
+  aerospace layout --window-id "$wid" floating
+  aerospace focus --window-id "$wid"
+  open -g raycast://extensions/raycast/window-management/almost-maximize
+  (sleep 0.5 && rm -f "$LOCKFILE") &
+elif [ "$focused_wid" = "$wid" ]; then
+  # Slack is focused -> hide to scratchpad
+  aerospace focus dfs-next 2>/dev/null || true
+  aerospace move-node-to-workspace --window-id "$wid" "$SCRATCHPAD_WS"
+else
+  # Slack is visible but not focused -> focus it
+  aerospace focus --window-id "$wid"
+  open -g raycast://extensions/raycast/window-management/almost-maximize
+fi

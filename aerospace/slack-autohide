@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Handles Slack scratchpad focus events:
+# - If Slack on S and gets focused (e.g. notification click) -> summon to previous workspace
+# - If Slack floating, visible, and loses focus -> hide to S
+
+SCRATCHPAD_WS="S"
+APP_NAME="Slack"
+LOCKFILE="/tmp/slack-scratchpad.lock"
+PREV_WS_FILE="/tmp/slack-prev-ws"
+
+# Skip if we just showed Slack (avoid race condition)
+[ -f "$LOCKFILE" ] && exit 0
+
+# Get Slack window info
+slack=$(aerospace list-windows --all --format '%{window-id}|%{app-name}|%{workspace}|%{window-layout}' | grep "$APP_NAME" | head -1)
+[ -z "$slack" ] && exit 0
+
+wid=$(echo "$slack" | cut -d'|' -f1)
+ws=$(echo "$slack" | cut -d'|' -f3)
+layout=$(echo "$slack" | cut -d'|' -f4)
+focused_wid=$(aerospace list-windows --focused --format '%{window-id}' 2>/dev/null)
+current_ws=$(aerospace list-workspaces --focused)
+
+# Track previous non-S workspace
+if [ "$current_ws" != "$SCRATCHPAD_WS" ]; then
+  echo "$current_ws" > "$PREV_WS_FILE"
+fi
+
+# If Slack is on S and just got focused (notification click) -> summon it
+if [ "$ws" = "$SCRATCHPAD_WS" ] && [ "$focused_wid" = "$wid" ]; then
+  prev_ws=$(cat "$PREV_WS_FILE" 2>/dev/null || echo "1")
+  touch "$LOCKFILE"
+  aerospace move-node-to-workspace --window-id "$wid" "$prev_ws"
+  aerospace layout --window-id "$wid" floating
+  aerospace focus --window-id "$wid"
+  open -g raycast://extensions/raycast/window-management/almost-maximize
+  (sleep 0.5 && rm -f "$LOCKFILE") &
+  exit 0
+fi
+
+# Only auto-hide if floating (scratchpad mode)
+[ "$layout" != "floating" ] && exit 0
+
+# Already hidden
+[ "$ws" = "$SCRATCHPAD_WS" ] && exit 0
+
+# Check if Slack is focused - don't hide if so
+[ "$focused_wid" = "$wid" ] && exit 0
+
+# Slack is floating, visible, and not focused -> hide it
+aerospace move-node-to-workspace --window-id "$wid" "$SCRATCHPAD_WS"
