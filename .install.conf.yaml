@@ -31,6 +31,7 @@
     ~/.claude/CLAUDE.md: .claude/CLAUDE.md
     ~/.claude/statusline-command.sh: .claude/statusline-command.sh
     ~/.config/zed/settings.json: zed/settings.json
+    ~/.config/ghostty:
 
 - create:
     - ~/downloads
