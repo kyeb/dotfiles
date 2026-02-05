@@ -2,7 +2,7 @@
 if ! pgrep -u "$USER" ssh-agent > /dev/null; then
         ssh-agent > "/tmp/ssh-agent.env"
 fi
-if [[ ! "$SSH_AUTH_SOCK" ]]; then
+if [[ ! "$SSH_AUTH_SOCK" && -f "/tmp/ssh-agent.env" ]]; then
         eval "$(<"/tmp/ssh-agent.env")" > /dev/null
 fi
 
