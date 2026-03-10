@@ -12,9 +12,9 @@
     "copilot": {
       "proxy": null,
       "proxy_no_verify": null,
-      "enterprise_uri": null
+      "enterprise_uri": null,
     },
-    "enabled_in_text_threads": false
+    "enabled_in_text_threads": false,
   },
   "base_keymap": "VSCode",
   "vim_mode": true,
@@ -23,9 +23,22 @@
   "theme": {
     "mode": "system",
     "light": "One Dark",
-    "dark": "One Dark"
+    "dark": "One Dark",
   },
   "preview_tabs": {
-    "enabled": false
-  }
+    "enabled": false,
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/.jj",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    ".flock/**/*",
+  ],
+  "file_scan_inclusions": [".env*", "docker-compose.*.yaml"],
 }

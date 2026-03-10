@@ -64,6 +64,31 @@ require("lazy").setup({
         formatters_by_ft = {},
       })
     end },
+
+  -- Telescope
+  { "nvim-telescope/telescope.nvim",
+    branch = "master",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
+    keys = {
+      { "<C-p>", "<cmd>Telescope find_files<cr>" },
+      { "<Leader>ff", "<cmd>Telescope find_files<cr>" },
+      { "<Leader>fg", "<cmd>Telescope live_grep<cr>" },
+      { "<Leader>fb", "<cmd>Telescope buffers<cr>" },
+      { "<Leader>fh", "<cmd>Telescope help_tags<cr>" },
+      { "<Leader>fr", "<cmd>Telescope oldfiles<cr>" },
+    },
+    config = function()
+      local telescope = require("telescope")
+      telescope.setup({
+        defaults = {
+          file_ignore_patterns = { "node_modules", ".git/" },
+        },
+      })
+      telescope.load_extension("fzf")
+    end },
 })
 
 -- Keymaps

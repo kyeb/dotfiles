@@ -174,3 +174,6 @@ export PATH=/Users/kyeb/.opencode/bin:$PATH
 # pnpm
 export PNPM_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/pnpm"
 [[ -d "$PNPM_HOME" ]] && export PATH="$PNPM_HOME:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/kyeb/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/kyeb/google-cloud-sdk/path.zsh.inc'; fi
