@@ -7,26 +7,24 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "edit_predictions": {
-    "mode": "eager",
-    "copilot": {
-      "proxy": null,
-      "proxy_no_verify": null,
-      "enterprise_uri": null,
-    },
-    "enabled_in_text_threads": false,
-  },
   "base_keymap": "VSCode",
   "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true,
+    "use_system_clipboard": "always",
+    "use_multiline_find": false,
+    "use_smartcase_find": false,
+    "highlight_on_yank_duration": 200
+  },
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
     "mode": "system",
-    "light": "One Dark",
-    "dark": "One Dark",
+    "light": "One Light",
+    "dark": "One Dark"
   },
   "preview_tabs": {
-    "enabled": false,
+    "enabled": false
   },
   "file_scan_exclusions": [
     "**/.git",
@@ -38,7 +36,10 @@
     "**/Thumbs.db",
     "**/.classpath",
     "**/.settings",
-    ".flock/**/*",
+    "**/node_modules",
+    "**/.parcel-cache",
+    "**/.vscode",
+    ".flock/**/*"
   ],
-  "file_scan_inclusions": [".env*", "docker-compose.*.yaml"],
+  "file_scan_inclusions": [".env*", "docker-compose.*.yaml"]
 }
