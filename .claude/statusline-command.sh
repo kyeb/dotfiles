@@ -39,26 +39,32 @@ fi
 model_colored="$(printf '\033[2m[%s]\033[22m' "$model")"
 
 # Context window progress bar
-used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
-total_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
-if [ -n "$used_pct" ]; then
-    used_int=$(printf '%.0f' "$used_pct")
+# Sum current_usage fields to get actual token count (total_input_tokens excludes cached tokens).
+# For 1M models, the effective window before autocompaction is ~400k.
+ctx_size=$(echo "$input" | jq -r '.context_window.context_window_size // 0')
+used_tokens=$(echo "$input" | jq '[.context_window.current_usage.input_tokens, .context_window.current_usage.cache_creation_input_tokens, .context_window.current_usage.cache_read_input_tokens] | map(. // 0) | add' 2>/dev/null)
+if [ -n "$used_tokens" ] && [ "$used_tokens" -gt 0 ] 2>/dev/null; then
+    effective_size="$ctx_size"
+    [ "$ctx_size" -ge 1000000 ] && effective_size=400000
+    used_int=$(( used_tokens * 100 / effective_size ))
+    [ "$used_int" -gt 100 ] && used_int=100
+    used_k="$(( used_tokens / 1000 )).$(( used_tokens % 1000 / 100 ))"
     bar_width=10
     filled=$(( (used_int * bar_width + 99) / 100 ))
     empty_blocks=$(( bar_width - filled ))
     bar=""
     for (( i=0; i<filled; i++ )); do bar+="█"; done
     for (( i=0; i<empty_blocks; i++ )); do bar+="░"; done
-    if [ "$total_tokens" -lt 150000 ]; then
+    if [ "$used_tokens" -lt 150000 ]; then
         bar_color="2"
-    elif [ "$total_tokens" -lt 200000 ]; then
+    elif [ "$used_tokens" -lt 200000 ]; then
         bar_color="33"
-    elif [ "$total_tokens" -lt 250000 ]; then
+    elif [ "$used_tokens" -lt 250000 ]; then
         bar_color="38;5;208"
     else
         bar_color="31"
     fi
-    ctx_colored="$(printf '\033[2m[\033[22;%sm%s\033[0;2m]\033[0m \033[%sm%d%%\033[0m' "$bar_color" "$bar" "$bar_color" "$used_int")"
+    ctx_colored="$(printf '\033[2m[\033[22;%sm%s\033[0;2m]\033[0m \033[%sm%d%%\033[0m \033[2m(%sk)\033[0m' "$bar_color" "$bar" "$bar_color" "$used_int" "$used_k")"
 else
     ctx_colored=""
 fi
