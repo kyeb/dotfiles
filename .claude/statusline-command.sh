@@ -35,5 +35,30 @@ fi
 # Model in dim white
 model_colored="$(printf '\033[2m[%s]\033[22m' "$model")"
 
+# Context window progress bar
+used_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty')
+total_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
+if [ -n "$used_pct" ]; then
+    used_int=$(printf '%.0f' "$used_pct")
+    bar_width=10
+    filled=$(( used_int * bar_width / 100 ))
+    empty_blocks=$(( bar_width - filled ))
+    bar=""
+    for (( i=0; i<filled; i++ )); do bar+="█"; done
+    for (( i=0; i<empty_blocks; i++ )); do bar+="░"; done
+    if [ "$total_tokens" -lt 150000 ]; then
+        bar_color="2"
+    elif [ "$total_tokens" -lt 200000 ]; then
+        bar_color="33"
+    elif [ "$total_tokens" -lt 250000 ]; then
+        bar_color="38;5;208"
+    else
+        bar_color="31"
+    fi
+    ctx_colored="$(printf '\033[%sm[%s %d%%]\033[0m' "$bar_color" "$bar" "$used_int")"
+else
+    ctx_colored=""
+fi
+
 # Combine everything
-printf '%s %s%s %s' "$rainbow_text" "$dir_colored" "$branch_colored" "$model_colored"
+printf '%s %s%s %s%s' "$rainbow_text" "$dir_colored" "$branch_colored" "$model_colored" "${ctx_colored:+ $ctx_colored}"
