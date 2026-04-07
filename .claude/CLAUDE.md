@@ -17,9 +17,8 @@
 ## Code style
 - Only add comments if they're necessary to explain a surprising or confusing piece of code. Normally, variable and function names should be enough to make the code readable without comments.
 - When there are parentheses, quote the paths properly so that the shell doesn't try to interpret them.
-- Prefer your Search tool, or use ripgrep to search for file contents
-- When using ripgrep, use `-t ts` to filter by file type (includes `.tsx`). Never use `-r ''` (replace) — it suppresses output and silently breaks `-l` listings.
-- Always use `fd` for finding specific file names or types
+- Prefer your Search tool, or use ripgrep to search for file contents. Fall back to standard tools if those aren't working.
+- Prefer using `fd` for finding specific file names or types
 
 ## Python
 - Use `uv` for dependency management when possible.
