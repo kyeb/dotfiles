@@ -25,8 +25,11 @@ rainbow_text+="$(printf '\033[2;%sm]' "${rainbow_colors[$color_index]}")"
 # Directory in cyan
 dir_colored="$(printf '\033[2;36m%s\033[22m' "$dir")"
 
-# Branch info in magenta (if it exists)
+# Branch info in magenta (truncated to 30 chars)
 if [ -n "$git_branch" ]; then
+    if [ ${#git_branch} -gt 30 ]; then
+        git_branch="${git_branch:0:29}…"
+    fi
     branch_colored="$(printf ' \033[2;35m%s\033[22m' "$git_branch")"
 else
     branch_colored=""
@@ -42,6 +45,7 @@ if [ -n "$used_pct" ]; then
     used_int=$(printf '%.0f' "$used_pct")
     bar_width=10
     filled=$(( used_int * bar_width / 100 ))
+    [ "$used_int" -gt 0 ] && [ "$filled" -eq 0 ] && filled=1
     empty_blocks=$(( bar_width - filled ))
     bar=""
     for (( i=0; i<filled; i++ )); do bar+="█"; done
@@ -55,7 +59,7 @@ if [ -n "$used_pct" ]; then
     else
         bar_color="31"
     fi
-    ctx_colored="$(printf '\033[%sm[%s %d%%]\033[0m' "$bar_color" "$bar" "$used_int")"
+    ctx_colored="$(printf '\033[2m[\033[22;%sm%s\033[0;2m]\033[0m \033[%sm%d%%\033[0m' "$bar_color" "$bar" "$bar_color" "$used_int")"
 else
     ctx_colored=""
 fi
