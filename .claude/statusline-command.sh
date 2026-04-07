@@ -44,8 +44,7 @@ total_tokens=$(echo "$input" | jq -r '.context_window.total_input_tokens // 0')
 if [ -n "$used_pct" ]; then
     used_int=$(printf '%.0f' "$used_pct")
     bar_width=10
-    filled=$(( used_int * bar_width / 100 ))
-    [ "$used_int" -gt 0 ] && [ "$filled" -eq 0 ] && filled=1
+    filled=$(( (used_int * bar_width + 99) / 100 ))
     empty_blocks=$(( bar_width - filled ))
     bar=""
     for (( i=0; i<filled; i++ )); do bar+="█"; done
