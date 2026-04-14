@@ -28,8 +28,9 @@
     ~/.config/zathura:
     ~/.aerospace.toml:
     ~/.config/atuin/config.toml: atuin-config.toml
-    ~/.claude/CLAUDE.md: .claude/CLAUDE.md
-    ~/.claude/statusline-command.sh: .claude/statusline-command.sh
+    ~/.claude/CLAUDE.md: claude/CLAUDE.md
+    ~/.claude/settings.json: claude/settings.json
+    ~/.claude/statusline-command.sh: claude/statusline-command.sh
     ~/.config/zed/settings.json: zed/settings.json
     ~/.config/ghostty:
 
