@@ -1,9 +1,9 @@
 {
-  "alwaysThinkingEnabled": true,
-  "voiceEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.sh"
-  }
+  },
+  "alwaysThinkingEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
+  "voiceEnabled": true
 }
